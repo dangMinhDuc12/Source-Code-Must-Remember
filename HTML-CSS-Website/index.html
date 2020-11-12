@@ -25,8 +25,34 @@
         <div class="grid">
           <nav class="header__navbar">
             <ul class="header__navbar-list">
-              <li class="header__navbar-item header__navbar-item--separate">
+              <li
+                class="header__navbar-item header__navbar-item--has-qr header__navbar-item--separate"
+              >
                 Vào cửa hàng trên ứng dụng
+
+                <!-- Header QR Code-->
+                <div class="header__qr">
+                  <img
+                    src="./assets/img/QR-Code.png"
+                    alt="QR Code"
+                    class="header__qr-img"
+                  />
+                  <div class="header__qr-apps">
+                    <a href="" class="header__qr-link"
+                      ><img
+                        src="./assets/img/Google-Play.png"
+                        alt="Google Play"
+                        class="header__qr-download-img"
+                    /></a>
+                    <a href="" class="header__qr-link">
+                      <img
+                        src="./assets/img/App-Store.png"
+                        alt="App Store"
+                        class="header__qr-download-img"
+                      />
+                    </a>
+                  </div>
+                </div>
               </li>
               <li class="header__navbar-item">
                 <span class="header__navbar-title--no-pointer">Kết nối</span>
@@ -39,11 +65,78 @@
               </li>
             </ul>
             <ul class="header__navbar-list">
-              <li class="header__navbar-item">
+              <li class="header__navbar-item header__navbar-item--has-notify">
                 <a href="" class="header__navbar-item-link">
                   <i class="header__navbar-icon fas fa-bell"></i>
                   Thông báo
                 </a>
+                <!-- Header Notify -->
+                <div class="header__notify">
+                  <header class="header__notify-header">
+                    <h3>Thông báo mới nhận</h3>
+                  </header>
+                  <ul class="header__notify-list">
+                    <li class="header__notify-item header__notify-item--viewed">
+                      <a href="" class="header__notify-link">
+                        <img
+                          src="https://img.abaha.vn/photos/resized/200x120/83-1590399520-myphamohui-lgvina.png"
+                          alt=""
+                          class="header__notify-img"
+                        />
+                        <div class="header__notify-info">
+                          <span class="header__notify-name"
+                            >Xác thực chính hãng nguồn gốc các sản phẩm
+                            Ohui</span
+                          >
+                          <span class="header__notify-description"
+                            >HiddenTag là giải pháp xác thực hàng chính hãng
+                            bằng công nghệ tiên tiến nhất hiện nay</span
+                          >
+                        </div>
+                      </a>
+                    </li>
+                    <li class="header__notify-item header__notify-item--viewed">
+                      <a href="" class="header__notify-link">
+                        <img
+                          src="https://img.abaha.vn/photos/resized/200x120/83-1595936336-myphamohui-lgvina.png"
+                          alt=""
+                          class="header__notify-img"
+                        />
+                        <div class="header__notify-info">
+                          <span class="header__notify-name"
+                            >Sale Sốc bộ dưỡng Ohui The First Tái tạo trẻ hóa da
+                            SALE OFF 70%</span
+                          >
+                          <span class="header__notify-description"
+                            >Giá chỉ còn 375.000(giá gốc: 1.250.000 vnđ)</span
+                          >
+                        </div>
+                      </a>
+                    </li>
+                    <li class="header__notify-item header__notify-item--viewed">
+                      <a href="" class="header__notify-link">
+                        <img
+                          src="https://img.abaha.vn/photos/resized/200x120/83-1589963137-myphamohui-lgvina.png"
+                          alt=""
+                          class="header__notify-img"
+                        />
+                        <div class="header__notify-info">
+                          <span class="header__notify-name"
+                            >Ohui chính thức ra mắt dòng son lì mới THE FIRST
+                            GENITURE LIPSTICK</span
+                          >
+                          <span class="header__notify-description"
+                            >Một làn môi căng mềm, quyến rũ với sắc màu nổi bật
+                            luôn là điều mà các quý cô ao ước</span
+                          >
+                        </div>
+                      </a>
+                    </li>
+                  </ul>
+                  <footer class="header__notify-footer">
+                    <a href="" class="header__notify-item-btn">Xem tất cả</a>
+                  </footer>
+                </div>
               </li>
               <li class="header__navbar-item">
                 <a href="" class="header__navbar-item-link">

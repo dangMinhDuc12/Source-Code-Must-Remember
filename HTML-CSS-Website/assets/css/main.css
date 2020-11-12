@@ -17,6 +17,15 @@
   position: relative;
 }
 
+.header__navbar-item--has-qr:hover .header__qr {
+  /* Viết như trên có nghĩa là vế trái được hover thì CSS sẽ ảnh hưởng đến vế phải */
+  display: block;
+}
+
+.header__navbar-item--has-notify:hover .header__notify {
+  display: block;
+}
+
 .header__navbar-item,
 .header__navbar-item-link {
   display: inline-block;
@@ -72,4 +81,157 @@
 .header__navbar-title--no-pointer {
   cursor: text;
   color: var(--white-color);
+}
+
+/* Header QR Code */
+
+.header__qr {
+  background-color: var(--white-color);
+  width: 186px;
+  position: absolute;
+  /* 100% so với thẻ li chứa nó */
+  top: 118%;
+  left: 0;
+  padding: 8px;
+  border-radius: 2px;
+  display: none;
+  animation-name: fadeIn;
+  animation-timing-function: ease-in;
+  animation-duration: 0.3s;
+}
+
+.header__qr::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 20px;
+  display: block;
+
+  left: 0;
+  top: -16px;
+}
+
+.header__qr-img {
+  /* 100% so với thẻ cha là header__qr */
+  width: 100%;
+}
+
+.header__qr-apps {
+  display: flex;
+  justify-content: space-between;
+}
+
+.header__qr-link:nth-child(1) {
+  margin-left: 11px;
+}
+
+.header__qr-link:nth-child(2) {
+  margin-right: 11px;
+}
+
+.header__qr-download-img {
+  height: 16px;
+}
+
+/* Header notify */
+.header__notify {
+  position: absolute;
+  top: 118%;
+
+  right: 0;
+  width: 404px;
+  background-color: var(--white-color);
+  border: 1px solid #d3d3d3;
+  /* Cursor Default: cái gì bấm vào được mới hiện bàn tay còn không sẽ không hiện */
+  cursor: default;
+  animation: headerNotifyGrowth ease-in 0.25s;
+
+  /* Transform-Origin thuộc tính điều chỉnh tấm của animation */
+  transform-origin: calc(100% - 20px) top;
+  display: none;
+}
+
+@keyframes headerNotifyGrowth {
+  from {
+    opacity: 0;
+    transform: scale(0);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.header__notify-header {
+  height: 40px;
+  background-color: var(--white-color);
+}
+
+.header__notify-header h3 {
+  color: #999;
+  margin: 0 0 0 12px;
+  font-weight: 400;
+  font-size: 1.4rem;
+  /* line-height bằng chiều cao của thẻ cha chứa nó thì chữ sẽ căn vào giữa */
+  line-height: 40px;
+  /* cursor: text; */
+
+  /* User-select: không cho người dùng chọn vào đây */
+  user-select: none;
+}
+.header__notify-list {
+  padding-left: 0;
+}
+.header__notify-item {
+  display: flex;
+}
+
+.header__notify-item:hover {
+  background-color: #f7f7f7;
+}
+
+.header__notify-item--viewed {
+  background-color: rgba(238, 77, 45, 0.1);
+}
+.header__notify-link {
+  display: flex;
+  padding: 12px;
+  text-decoration: none;
+
+  width: 100%;
+}
+.header__notify-img {
+  width: 48px;
+  /* object-fit: điều chỉnh kích cỡ ảnh phù hợp giống với background-size; */
+  object-fit: contain;
+}
+.header__notify-info {
+  margin-left: 12px;
+}
+.header__notify-name {
+  display: block;
+  font-size: 1.4rem;
+  color: var(--black-color);
+  font-weight: 400;
+}
+.header__notify-description {
+  display: block;
+  font-size: 1.2rem;
+  color: #756f6e;
+  line-height: 1.8rem;
+  margin-top: 4px;
+}
+
+.header__notify-footer {
+  /* Dùng text-align: center thì sẽ không dùng được padding do thuộc tính mặc đinh của nó, dùng display: flex ta có thể dùng margin: auto để căn giữa chữ; */
+  display: flex;
+}
+
+.header__notify-item-btn {
+  text-decoration: none;
+  color: var(--text-color);
+  padding: 8px 36px;
+  margin: auto;
+  font-size: 1.4rem;
+  font-weight: 400;
 }
