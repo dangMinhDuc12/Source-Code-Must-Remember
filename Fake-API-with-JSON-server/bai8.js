@@ -1,10 +1,14 @@
 let menuApi = "http://localhost:3000/menu";
+let indexUpdate;
+let ul = document.getElementById("menu");
 
 //Function chay project
 function start() {
   getMenu(renderMenu);
   create();
-  deleteEvent();
+
+  handleUpdate();
+  btnUpdateAndDelete();
 }
 
 start();
@@ -21,9 +25,8 @@ function getMenu(callback) {
 //Function render ra man hinh
 
 function renderMenu(menu) {
-  let ul = document.getElementById("menu");
   let htmls = menu.map(function (m, index) {
-    return `<li id = "${m.id}">${m.name}<button class = "delete">X</button></li>`;
+    return `<li id = "${m.id}"><span class = "content">${m.name}</span><button class = "delete">Xoa</button><button  class = "update">Update</button></li>`;
   });
   let html = htmls.join("");
   ul.innerHTML = html;
@@ -44,15 +47,10 @@ function create() {
   };
 }
 //Function xoa
-function deleteEvent() {
-  let ul = document.getElementById("menu");
-  ul.onclick = function (e) {
-    if (e.target.classList.contains("delete")) {
-      deleteMenu(e.target.parentElement.id, function () {
-        getMenu(renderMenu);
-      });
-    }
-  };
+function deleteEvent(id) {
+  deleteMenu(id, function () {
+    getMenu(renderMenu);
+  });
 }
 
 //Function gui yeu cau xoa mon an
@@ -87,4 +85,56 @@ function creatMenu(data, callback) {
       return response.json();
     })
     .then(callback);
+}
+
+// Function render update
+function renderUpdate(id) {
+  let inputUpdate = document.getElementById("inputUpdate");
+  let li = document.getElementById(id);
+  inputUpdate.value = li.children[0].textContent;
+  indexUpdate = id;
+}
+
+//Function creat update
+function handleUpdate() {
+  let buttonUpdate = document.getElementById("update-button");
+  let inputUpdate = document.getElementById("inputUpdate");
+  buttonUpdate.onclick = function (e) {
+    let name = inputUpdate.value;
+    let formMenuUpdate = {
+      name: name,
+    };
+    updateToApi(indexUpdate, formMenuUpdate, function () {
+      getMenu(renderMenu);
+    });
+  };
+}
+
+//Function gui yeu cau update
+function updateToApi(id, data, callback) {
+  let object = {
+    method: "PUT",
+    body: JSON.stringify(data),
+    headers: {
+      "Content-Type": "application/json",
+      // "Content-Type": "application/x-www-form-urlencoded",
+    },
+  };
+  fetch(menuApi + "/" + id, object)
+    .then(function (response) {
+      return response.json();
+    })
+    .then(callback);
+}
+
+//Function khoi tao 2 ham delete va update
+function btnUpdateAndDelete() {
+  ul.onclick = function (e) {
+    if (e.target.classList.contains("delete")) {
+      deleteEvent(e.target.parentElement.id);
+    }
+    if (e.target.classList.contains("update")) {
+      renderUpdate(e.target.parentElement.id);
+    }
+  };
 }

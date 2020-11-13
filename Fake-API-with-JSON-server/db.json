@@ -1,32 +1,20 @@
 {
   "menu": [
     {
-      "name": "Bun ngan",
-      "id": 22
-    },
-    {
-      "name": "Com rang",
-      "id": 23
-    },
-    {
-      "name": "Bun cha",
-      "id": 24
-    },
-    {
       "name": "Pho ga",
-      "id": 25
-    },
-    {
-      "name": "Pho bo",
       "id": 27
     },
     {
-      "name": "Mien ngan",
+      "name": "Bun ngan",
       "id": 28
     },
     {
-      "name": "Com trung",
-      "id": 29
+      "name": "Bun cha",
+      "id": 31
+    },
+    {
+      "name": "Mien tron",
+      "id": 32
     }
   ]
 }
