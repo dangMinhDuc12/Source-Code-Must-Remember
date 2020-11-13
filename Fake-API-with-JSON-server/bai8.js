@@ -1,11 +1,10 @@
 let menuApi = "http://localhost:3000/menu";
-let ul = document.getElementById("menu");
 
 //Function chay project
 function start() {
   getMenu(renderMenu);
   create();
-  delete1();
+  deleteEvent();
 }
 
 start();
@@ -22,6 +21,7 @@ function getMenu(callback) {
 //Function render ra man hinh
 
 function renderMenu(menu) {
+  let ul = document.getElementById("menu");
   let htmls = menu.map(function (m, index) {
     return `<li id = "${m.id}">${m.name}<button class = "delete">X</button></li>`;
   });
@@ -38,14 +38,19 @@ function create() {
     let formMenu = {
       name: name,
     };
-    creatMenu(formMenu, getMenu(renderMenu));
+    creatMenu(formMenu, function () {
+      getMenu(renderMenu);
+    });
   };
 }
 //Function xoa
-function delete1() {
+function deleteEvent() {
+  let ul = document.getElementById("menu");
   ul.onclick = function (e) {
     if (e.target.classList.contains("delete")) {
-      deleteMenu(e.target.parentElement.id, getMenu(renderMenu));
+      deleteMenu(e.target.parentElement.id, function () {
+        getMenu(renderMenu);
+      });
     }
   };
 }
@@ -74,7 +79,7 @@ function creatMenu(data, callback) {
     body: JSON.stringify(data),
     headers: {
       "Content-Type": "application/json",
-      // 'Content-Type': 'application/x-www-form-urlencoded',
+      // "Content-Type": "application/x-www-form-urlencoded",
     },
   };
   fetch(menuApi, object)

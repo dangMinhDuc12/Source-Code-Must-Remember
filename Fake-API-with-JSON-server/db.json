@@ -1,10 +1,6 @@
 {
   "menu": [
     {
-      "name": "My xao",
-      "id": 21
-    },
-    {
       "name": "Bun ngan",
       "id": 22
     },
@@ -19,6 +15,18 @@
     {
       "name": "Pho ga",
       "id": 25
+    },
+    {
+      "name": "Pho bo",
+      "id": 27
+    },
+    {
+      "name": "Mien ngan",
+      "id": 28
+    },
+    {
+      "name": "Com trung",
+      "id": 29
     }
   ]
 }
