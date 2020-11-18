@@ -150,6 +150,7 @@
   /* Transform-Origin thuộc tính điều chỉnh tấm của animation */
   transform-origin: calc(100% - 20px) top;
   display: none;
+  z-index: 1;
 }
 .header__notify::before {
   /*Tạo một lớp giả làm cầu nối giữa thẻ cha và thẻ con  */
