@@ -15,6 +15,14 @@
     {
       "name": "Mien tron",
       "id": 32
+    },
+    {
+      "name": "Mien ngan",
+      "id": 33
+    },
+    {
+      "name": "Pho ga Phuong Lu",
+      "id": 34
     }
   ]
 }
