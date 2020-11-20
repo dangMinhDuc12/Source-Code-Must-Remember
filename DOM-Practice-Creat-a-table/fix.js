@@ -43,17 +43,35 @@ function inra(data) {
   // }
 
   // cach 2
-  let timeSheetWithMap = timeSheet.map(function (value, index) {
-    return `<tr id = "${index}">
-              <td>${value.project}</td>
-              <td>${value.task}</td>
-              <td>${value.timeSpent}</td>
-              <td><button class = "update btn btn-success">Sửa lại</button></td>
-              <td><button class = "delete btn btn-danger">Xóa khỏi bảng</button></td>
-            </tr>`;
-  });
-  let timeSheetRender = timeSheetWithMap.join("");
-  body.innerHTML = timeSheetRender;
+  // let timeSheetWithMap = timeSheet.map(function (value, index) {
+  //   return `<tr id = "${index}">
+  //             <td>${value.project}</td>
+  //             <td>${value.task}</td>
+  //             <td>${value.timeSpent}</td>
+  //             <td><button class = "update btn btn-success">Sửa lại</button></td>
+  //             <td><button class = "delete btn btn-danger">Xóa khỏi bảng</button></td>
+  //           </tr>`;
+  // });
+  // let timeSheetRender = timeSheetWithMap.join("");
+  // body.innerHTML = timeSheetRender;
+
+  //cach 3
+
+  let a = timeSheet.reduce(function (acc, value, index) {
+    let b = `<tr id = "${index}">
+                 <td>${value.project}</td>
+                 <td>${value.task}</td>
+                 <td>${value.timeSpent}</td>
+                 <td><button class = "update btn btn-success">Sửa lại</button></td>
+                 <td><button class = "delete btn btn-danger">Xóa khỏi bảng</button></td>
+              </tr>`;
+
+    // hàm reduce không dùng push là vì push sẽ làm thay đổi mảng gốc còn concat sẽ nối mảng gốc với phần tử khác và lưu vào một biến khác mà không làm thay đổi mảng gốc
+    return acc.concat(b);
+  }, []);
+
+  let c = a.join("");
+  body.innerHTML = c;
 }
 
 //in ra lan dau tien
