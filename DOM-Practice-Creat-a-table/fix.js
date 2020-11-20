@@ -32,15 +32,28 @@ let body = table.children[1];
 //Ham in ra man hinh du lieu timeSheet
 function inra(data) {
   body.innerHTML = ""; //reset lai the body khong thi no se in chong len nhau;
-  for (let i = 0; i < timeSheet.length; i++) {
-    body.innerHTML += `<tr id = "${i}">
-                            <td>${timeSheet[i].project}</td>
-                            <td>${timeSheet[i].task}</td>
-                            <td>${timeSheet[i].timeSpent}</td>
-                            <td><button class = "update btn btn-success">Sửa lại</button></td>
-                            <td><button class = "delete btn btn-danger">Xóa khỏi bảng</button></td>
-                          </tr>`;
-  }
+  // for (let i = 0; i < timeSheet.length; i++) {
+  //   body.innerHTML += `<tr id = "${i}">
+  //                           <td>${timeSheet[i].project}</td>
+  //                           <td>${timeSheet[i].task}</td>
+  //                           <td>${timeSheet[i].timeSpent}</td>
+  //                           <td><button class = "update btn btn-success">Sửa lại</button></td>
+  //                           <td><button class = "delete btn btn-danger">Xóa khỏi bảng</button></td>
+  //                         </tr>`;
+  // }
+
+  // cach 2
+  let timeSheetWithMap = timeSheet.map(function (value, index) {
+    return `<tr id = "${index}">
+              <td>${value.project}</td>
+              <td>${value.task}</td>
+              <td>${value.timeSpent}</td>
+              <td><button class = "update btn btn-success">Sửa lại</button></td>
+              <td><button class = "delete btn btn-danger">Xóa khỏi bảng</button></td>
+            </tr>`;
+  });
+  let timeSheetRender = timeSheetWithMap.join("");
+  body.innerHTML = timeSheetRender;
 }
 
 //in ra lan dau tien
