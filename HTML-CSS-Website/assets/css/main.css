@@ -1002,3 +1002,108 @@
   margin: auto;
   color: #555;
 }
+
+/* product item */
+.home-product-item {
+  background-color: var(--white-color);
+  margin-top: 10px;
+}
+.home-product-item__img {
+  /* padding top trong trường hợp này là tự tạo hình vuông cho bức ảnh với chiều dài bằng thằng div cha chứa nó */
+  padding-top: 100%;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+}
+.home-product-item__name {
+  font-size: 1.4rem;
+  font-weight: 400;
+  color: var(--text-color);
+  line-height: 1.8rem;
+  /* padding: 0 10px; */
+  margin: 10px 10px 6px;
+  height: 3.6rem;
+
+  /* Ở dưới là để hiện dấu 3 chấm */
+  overflow: hidden;
+  display: block;
+  display: -webkit-box;
+  /* Vertical là chiều dọc */
+  -webkit-box-orient: vertical;
+  /*Line-clamp là muốn chữ hiện thị trong mấy dòng */
+  -webkit-line-clamp: 2;
+}
+.home-product-item__price {
+  display: flex;
+
+  align-items: baseline;
+  flex-wrap: wrap;
+}
+.home-product-item__price-old {
+  margin-left: 10px;
+  font-size: 1.4rem;
+  color: #666;
+  text-decoration: line-through;
+}
+.home-product-item__price-current {
+  margin-left: 10px;
+  font-size: 1.6rem;
+  color: var(--primary-color);
+}
+.home-product-item__action {
+  display: flex;
+  justify-content: space-between;
+  margin: 6px 10px 0px;
+}
+.home-product-item__like {
+  font-size: 1.3rem;
+}
+
+i.home-product-item__like-icon-fill {
+  color: #f63d30;
+  display: none;
+}
+
+.home-product-item__like--liked .home-product-item__like-icon-fill {
+  display: inline-block;
+}
+
+.home-product-item__like--liked .home-product-item__like-icon-empty {
+  display: none;
+}
+
+.home-product-item__rating {
+  font-size: 0.8rem;
+  color: #d5d5d5;
+  margin: -1px 0 0 auto;
+}
+
+.home-product-item__star--gold {
+  color: var(--star-gold-color);
+}
+.home-product-item__sold {
+  font-size: 1.2rem;
+  color: var(--text-color);
+  margin-left: 6px;
+}
+
+.home-product-item__origin {
+  display: flex;
+  margin: 3px 10px 0;
+  color: #595959;
+  font-size: 1.2rem;
+  font-weight: 300;
+}
+.home-product-item__brand {
+}
+.home-product-item__origin-name {
+  margin-left: auto;
+}
+.home-product-item__favourite {
+}
+.home-product-item__sale-off {
+}
+.home-product-item__sale-off-percent {
+}
+.home-product-item__sale-off-label {
+}
