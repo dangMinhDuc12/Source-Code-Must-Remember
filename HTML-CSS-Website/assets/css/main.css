@@ -189,6 +189,8 @@
   animation-name: fadeIn;
   animation-timing-function: ease-in;
   animation-duration: 0.3s;
+  z-index: 1;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
 }
 
 .header__qr::before {
@@ -621,6 +623,8 @@
 .header__cart-list-item {
   padding-left: 0;
   list-style: none;
+  height: 55vh;
+  overflow-y: auto;
 }
 
 .header__cart-item {
@@ -769,6 +773,7 @@
 
 .header__search-option {
   position: absolute;
+  z-index: 1;
   right: 0;
   top: 125%;
   width: 130px;
@@ -819,6 +824,7 @@
 
 .header__search-history {
   position: absolute;
+  z-index: 1;
   top: calc(100% + 2px);
   left: 0;
   width: calc(100% - 16px);
@@ -884,6 +890,7 @@
   padding: 12px 16px;
   border-bottom: 1px solid rgba(0, 0, 0, 0.05);
   margin-top: 0;
+  text-transform: uppercase;
 }
 
 .category__heading-icon {
@@ -898,6 +905,21 @@
 }
 
 .category-item {
+  position: relative;
+}
+
+.category-item:nth-of-type(1)::before {
+  display: none;
+}
+
+.category-item::before {
+  content: "";
+  border-top: 1px solid #e1e1e1;
+
+  position: absolute;
+  top: 0;
+  left: 16px;
+  right: 16px;
 }
 
 .category-item--active .category-item__link {
@@ -921,7 +943,7 @@
   text-decoration: none;
   color: var(--text-color);
   font-size: 1.5rem;
-  padding: 4px 16px;
+  padding: 10px 16px;
   display: block;
   transition: right 0.1s linear;
   right: 0;
@@ -1004,12 +1026,30 @@
 }
 
 /* product item */
+.home-product {
+  margin-bottom: 10px;
+}
+
 .home-product-item {
+  display: block;
+  text-decoration: none;
   background-color: var(--white-color);
   margin-top: 10px;
+  position: relative;
+  border-bottom-left-radius: 2px;
+  border-bottom-right-radius: 2px;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1);
+  transition: transform linear 0.1s;
 }
+
+.home-product-item:hover {
+  box-shadow: 0 1px 20px 0 rgba(0, 0, 0, 0.05);
+  transform: translateY(-1px);
+}
+
 .home-product-item__img {
-  /* padding top trong trường hợp này là tự tạo hình vuông cho bức ảnh với chiều dài bằng thằng div cha chứa nó */
+  /* padding-top: 100% lấy kích thước chiều ngang của thẻ cha để làm width height cho thẻ con là div chỉ chứa background-image (dùng cách này ko cần set width height cho img)*/
+  background-image: url("https://img.abaha.vn/photos/resized/320x/83-1586781803-myphamohui-lgvina.png");
   padding-top: 100%;
   background-repeat: no-repeat;
   background-size: contain;
@@ -1100,10 +1140,73 @@ i.home-product-item__like-icon-fill {
   margin-left: auto;
 }
 .home-product-item__favourite {
+  position: absolute;
+  top: 10px;
+  left: -4px;
+  color: var(--primary-color);
+  /* currentColor sẽ ăn theo màu của color hiện tại là primary color */
+  background-color: currentColor;
+
+  font-size: 1.2rem;
+  font-weight: 500;
+  padding-right: 4px;
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
+}
+
+.home-product-item__favourite::before {
+  content: "";
+  border-top: 3px solid currentColor;
+  border-left: 3px solid transparent;
+  position: absolute;
+  left: 0;
+  bottom: -3px;
+  /* filter thuộc tính để chỉnh màu, độ sáng của ảnh,... */
+  filter: brightness(60%);
+}
+
+.home-product-item__favourite i {
+  font-size: 0.9rem;
+  margin: 0 2px 0 5px;
+  color: var(--white-color);
+}
+
+.home-product-item__favourite span {
+  color: var(--white-color);
 }
 .home-product-item__sale-off {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 40px;
+  height: 36px;
+  background-color: rgba(255, 216, 64, 0.94);
+  text-align: center;
 }
+
+.home-product-item__sale-off::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  border-width: 0 20px 4px;
+  border-color: red rgba(255, 216, 64, 0.94) transparent
+    rgba(255, 216, 64, 0.94);
+  border-style: solid;
+}
+
 .home-product-item__sale-off-percent {
+  color: #ee4d2d;
+  font-weight: 600;
+  font-size: 1.3rem;
+  line-height: 1.3rem;
+  display: block;
+  margin-top: 3px;
 }
 .home-product-item__sale-off-label {
+  font-size: 1.4rem;
+  line-height: 1.4rem;
+  color: var(--white-color);
+  display: block;
+  margin-top: 3px;
 }
