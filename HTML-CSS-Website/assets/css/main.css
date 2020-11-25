@@ -1210,3 +1210,80 @@ i.home-product-item__like-icon-fill {
   display: block;
   margin-top: 3px;
 }
+
+.home-product__pagination {
+  margin-top: 48px;
+  margin-bottom: 32px;
+}
+
+/* footer */
+.footer {
+  border-top: 4px solid var(--primary-color);
+  padding-top: 16px;
+  background-color: var(--white-color);
+}
+.footer__heading {
+  font-size: 1.4rem;
+  text-transform: uppercase;
+  color: var(--text-color);
+}
+.footer__list {
+  padding-left: 0;
+  list-style: none;
+}
+.footer__list-item {
+}
+.footer__list-item-link {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  font-size: 1.2rem;
+  color: #737373;
+  padding: 6px 0;
+}
+
+.footer__list-item-link:hover {
+  color: var(--primary-color);
+}
+
+.footer__list-item-link-icon {
+  margin: -1px 8px 0 0;
+  font-size: 1.6rem;
+}
+
+.footer__download {
+  display: flex;
+}
+.footer__download-qr {
+  width: 80px;
+  height: 80px;
+  border: 1px solid var(--border-color);
+}
+.footer__download-apps {
+  margin-left: 16px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.footer__download-apps-link {
+  display: block;
+  text-decoration: none;
+  color: transparent;
+}
+
+.footer__download-apps-img {
+  height: 20px;
+}
+
+.footer__text {
+  margin: 50px auto;
+  font-size: 1.4rem;
+  color: var(--text-color);
+}
+
+.footer__bottom {
+  margin-top: 50px;
+  background-color: #f5f5f5;
+}
