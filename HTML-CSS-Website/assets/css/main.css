@@ -76,8 +76,7 @@
   /* background-color: red; */
 }
 
-.header__navbar-user-item {
-}
+
 
 .header__navbar-user-item--separate {
   border-top: 1px solid rgba(0, 0, 0, 0.05);
@@ -386,8 +385,7 @@
   cursor: pointer;
 }
 
-.auth-form__form {
-}
+
 
 .auth-form__input {
   width: 100%;
@@ -1134,8 +1132,7 @@ i.home-product-item__like-icon-fill {
   font-size: 1.2rem;
   font-weight: 300;
 }
-.home-product-item__brand {
-}
+
 .home-product-item__origin-name {
   margin-left: auto;
 }
@@ -1231,8 +1228,7 @@ i.home-product-item__like-icon-fill {
   padding-left: 0;
   list-style: none;
 }
-.footer__list-item {
-}
+
 .footer__list-item-link {
   display: flex;
   align-items: center;
