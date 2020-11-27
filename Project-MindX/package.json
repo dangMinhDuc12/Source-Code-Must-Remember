@@ -1,0 +1,23 @@
+{
+  "name": "project-blog",
+  "version": "1.0.0",
+  "description": "Branch của Nguyễn Mạnh Hùng",
+  "main": "index.js",
+  "scripts": {
+    "start": " json-server --watch db.json",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nmhung1234/MediaBlogProject.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nmhung1234/MediaBlogProject/issues"
+  },
+  "homepage": "https://github.com/nmhung1234/MediaBlogProject#readme",
+  "dependencies": {
+    "json-server": "^0.16.3"
+  }
+}
