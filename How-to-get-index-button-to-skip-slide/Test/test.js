@@ -1,6 +1,6 @@
 /**Phải gắn cả if else vào để kiểm tra vì nếu chỉ gắn if không thì kiểm tra index và chuyển ảnh
  * sẽ bị chậm nhau 1 nhịp dẫn đến chuyển ảnh rồi mới kiểm tra dẫn đến không chuyển được ảnh. Vì thế
- * phải dùng if else đẻ có thể check index trước rồi mới chuyển ảnh
+ * phải dùng if else để có thể check index trước rồi mới chuyển ảnh
  */
 
 let button = document.querySelectorAll(".button__item");
