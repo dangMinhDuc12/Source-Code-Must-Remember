@@ -7,12 +7,19 @@ let button = document.querySelectorAll(".button__item");
 let slide = document.querySelectorAll(".image__item-img");
 
 function clearAllClass() {
-  for (let i = 0; i < button.length; i++) {
-    button[i].classList.remove("button__active");
-  }
-  for (let i = 0; i < slide.length; i++) {
-    slide[i].classList.remove("image__item-img--active");
-  }
+  // for (let i = 0; i < button.length; i++) {
+  //   button[i].classList.remove("button__active");
+  // }
+  // for (let i = 0; i < slide.length; i++) {
+  //   slide[i].classList.remove("image__item-img--active");
+  // }
+
+  button.forEach(function (buttonRemove) {
+    buttonRemove.classList.remove("button__active");
+  });
+  slide.forEach(function (slideRemove) {
+    slideRemove.classList.remove("image__item-img--active");
+  });
 }
 
 function checkIndexButton(buttonCheck) {
