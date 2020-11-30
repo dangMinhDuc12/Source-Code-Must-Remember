@@ -64,6 +64,7 @@ article img {
 }
 .nav__input:checked ~ .nav__mobile {
   transform: translateX(0);
+  opacity: 1;
 }
 
 .nav__overlay {
@@ -75,6 +76,7 @@ article img {
 
   background-color: rgba(0, 0, 0, 0.3);
   display: none;
+  animation: fadeIn 0.3s linear;
 }
 .nav__mobile {
   position: fixed;
@@ -85,6 +87,8 @@ article img {
   max-width: 100%;
   background-color: #fff;
   transform: translateX(-100%);
+  opacity: 0;
+  transition: all 0.3s linear;
 }
 .nav__mobile-list {
   list-style: none;
@@ -109,6 +113,16 @@ article img {
   margin-left: 20px;
   opacity: 0;
 }
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
 @media (max-width: 1023px) {
   .nav__bars-btn-icon {
     display: block;
