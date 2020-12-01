@@ -57,6 +57,22 @@ function inra(data) {
 
   //cach 3
 
+  // let a = timeSheet.reduce(function (acc, value, index) {
+  //   let b = `<tr id = "${index}">
+  //                <td>${value.project}</td>
+  //                <td>${value.task}</td>
+  //                <td>${value.timeSpent}</td>
+  //                <td><button class = "update btn btn-success">Sửa lại</button></td>
+  //                <td><button class = "delete btn btn-danger">Xóa khỏi bảng</button></td>
+  //             </tr>`;
+
+  //   return acc.concat(b);
+  // }, []);
+
+  // let c = a.join("");
+  // body.innerHTML = c;
+
+  //cach 4
   let a = timeSheet.reduce(function (acc, value, index) {
     let b = `<tr id = "${index}">
                  <td>${value.project}</td>
@@ -65,13 +81,15 @@ function inra(data) {
                  <td><button class = "update btn btn-success">Sửa lại</button></td>
                  <td><button class = "delete btn btn-danger">Xóa khỏi bảng</button></td>
               </tr>`;
-
-    // hàm reduce không dùng push là vì push sẽ làm thay đổi mảng gốc còn concat sẽ nối mảng gốc với phần tử khác và lưu vào một biến khác mà không làm thay đổi mảng gốc
-    return acc.concat(b);
+    acc.push(b);
+    return acc;
   }, []);
-
   let c = a.join("");
   body.innerHTML = c;
+
+  /* Không thể return trực tiếp acc.push(b) trong reduce mà phải tách ra làm 2 bước 
+  vì nếu return trực tiếp thì sau khi return lần đầu hàm push sẽ trả về một số là độ dài của mảng hiện tại
+  do đó 1 số không thể có hàm push vì vậy ta phải tách làm 2 bước push trước sau đó return*/
 }
 
 //in ra lan dau tien
