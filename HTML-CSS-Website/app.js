@@ -1,5 +1,4 @@
 // let btn1 = document.getElementById("test");
-
 // let div1 = document.getElementById("div");
 // let div2 = document.getElementById("div2");
 // btn1.onclick = function () {
