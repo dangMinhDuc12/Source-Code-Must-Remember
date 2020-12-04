@@ -12,6 +12,7 @@
   --header-with-search-height: calc(
     var(--header-height) - var(--navbar-height)
   );
+  --header-sort-bar-height: 46px;
 }
 
 * {
@@ -27,15 +28,6 @@ html {
 }
 
 /* Css cho responsive */
-.grid {
-  width: 1200px;
-  max-width: 100%;
-  margin: 0 auto;
-}
-
-.grid__full-width {
-  width: 100%;
-}
 
 .grid__row {
   display: flex;
@@ -185,9 +177,6 @@ html {
   display: none;
 }
 
-.select-input__item {
-}
-
 .select-input__link {
   font-size: 1.4rem;
   color: var(--text-color);
@@ -231,7 +220,4 @@ html {
 
 .pagination-item--active .pagination-item__link:hover {
   background-color: #ed5c3f;
-}
-
-.pagination-item__icon {
 }
