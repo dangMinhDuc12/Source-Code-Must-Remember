@@ -34,6 +34,9 @@
   .header__sort-bar {
     display: flex;
   }
+  .app__content {
+    padding-top: 8px;
+  }
 }
 
 /* Tablet */
@@ -113,12 +116,28 @@
     height: 25px;
     font-size: 1.5rem;
   }
-  .footer__heading,
-  .footer__list {
-    margin-left: 4px;
-  }
 
   .app__content {
     margin: 0 4px;
+  }
+  .mobile-category {
+    display: block;
+  }
+  .header__logo-img {
+    width: 110px;
+  }
+
+  .footer__content {
+    padding: 0 16px;
+  }
+  .header__logo-link {
+    margin-right: 25px;
+  }
+  .footer__heading {
+    text-align: center;
+  }
+  .footer__list-item-link,
+  .footer__download {
+    justify-content: center;
   }
 }
