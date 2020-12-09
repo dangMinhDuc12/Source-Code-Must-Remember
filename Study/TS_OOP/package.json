@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "compile": "tsc learn_ts.ts --watch",
+    "compile": "tsc learn_OOP.ts --watch",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
