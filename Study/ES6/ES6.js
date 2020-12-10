@@ -207,14 +207,61 @@
 
 //17 Optional chaining
 
-let person1 = {
-  age: 23,
-  // person2: {
-  //   // person3: {
-  //   //   name: "Quan",
-  //   // },
-  // },
-};
+// let person1 = {
+//   age: 23,
+//   // person2: {
+//   //   // person3: {
+//   //   //   name: "Quan",
+//   //   // },
+//   // },
+// };
 
-//Thay vì dùng if else để check xem có giá trị đó tồn tại hay không ta có thể dùng OC để check sau vị trí của phần tử mà ta nghi ngờ
-console.log(person1.person2?.person3?.name);
+// //Thay vì dùng if else để check xem có giá trị đó tồn tại hay không ta có thể dùng OC để check sau vị trí của phần tử mà ta nghi ngờ
+// console.log(person1.person2?.person3?.name);
+
+class Tuong {
+  constructor(ten, moTa, mau) {
+    this.ten = ten;
+    this.moTa = moTa;
+    this.mau = mau;
+  }
+  showThongTin() {
+    console.log(`
+    Tên tướng : ${this.ten}
+    Mô tả: ${this.moTa}
+    Máu: ${this.mau}
+    `);
+  }
+
+  static testStatic() {
+    console.log("Đây là hàm static");
+  }
+
+  set themchieuCuoi(chieuCuoi) {
+    this.chieuCuoi = chieuCuoi;
+  }
+  // get themchieuCuoi() {
+  //   return this.chieuCuoi;
+  // }
+}
+
+class SatThu extends Tuong {
+  constructor(ten, moTa, mau, donSatThu) {
+    super(ten, moTa, mau);
+    this.donSatThu = donSatThu;
+  }
+
+  showThongTinSatThu() {
+    super.showThongTin();
+    console.log(`Đòn sát thủ : ${this.donSatThu}`);
+  }
+
+  set themMana(mana) {}
+}
+var tuong = new Tuong("Ashe", "Cung Băng", 500);
+tuong.chieuCuoi = "Đại Băng Tiễn";
+console.log(tuong.chieuCuoi);
+
+var satThu = new SatThu("Talon", "Nhát chém", 200, "Khiêu khích");
+satThu.chieuCuoi = "Chém gió";
+console.log(satThu.chieuCuoi);
