@@ -1,0 +1,3 @@
+Bước 1: Mở command line
+Bước 2: Gõ netstat -ano | findstr :<PORT>
+Bước 3: Gõ taskkill /PID <PID> /F
