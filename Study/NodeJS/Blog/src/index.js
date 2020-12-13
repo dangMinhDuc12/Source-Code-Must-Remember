@@ -23,6 +23,14 @@ app.use(express.static(path.join(__dirname, "public")));
 //HTTP Logger
 app.use(morgan("combined"));
 
+//Dùng Middleware để làm trung gian lấy dữ liệu được gửi đi từ phương thức POST
+app.use(
+  express.urlencoded({
+    extended: true, //Sửa lỗi warning body-parser
+  })
+); //Dạng Form
+app.use(express.json()); //Dạng JS: XTMLHttp, Fetch, Axios,...
+
 //Template Engine
 
 app.engine(
