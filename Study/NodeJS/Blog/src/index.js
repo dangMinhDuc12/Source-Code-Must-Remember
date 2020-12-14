@@ -20,6 +20,12 @@ const port = 3000;
 //Call routes từ file routes
 const route = require('./routes/route_function.js');
 
+//Import DB
+const db = require('./config/db/db_index.js');
+
+//Connect to DB
+db.connect();
+
 //Dùng các file tĩnh (static file) như là img hay css
 app.use(express.static(path.join(__dirname, 'public')));
 
@@ -53,5 +59,5 @@ route(app);
 
 //Tạo Port cho web
 app.listen(port, () => {
-    console.log(`Example app listening at http://localhost:${port}`);
+    console.log(`App của bạn đang chạy ở địa chỉ: http://localhost:${port}`);
 });
