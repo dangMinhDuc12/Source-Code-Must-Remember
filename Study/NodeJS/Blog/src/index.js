@@ -8,42 +8,42 @@
  */
 
 //Import Library
-const path = require("path");
-const express = require("express");
-const morgan = require("morgan");
-const handlebars = require("express-handlebars");
+const path = require('path');
+const express = require('express');
+const morgan = require('morgan');
+const handlebars = require('express-handlebars');
 //Call Express
 const app = express();
 //Init Port
 const port = 3000;
 
 //Call routes từ file routes
-const route = require("./routes/route_function.js");
+const route = require('./routes/route_function.js');
 
 //Dùng các file tĩnh (static file) như là img hay css
-app.use(express.static(path.join(__dirname, "public")));
+app.use(express.static(path.join(__dirname, 'public')));
 
 //HTTP Logger
-app.use(morgan("combined"));
+app.use(morgan('combined'));
 
 //Dùng Middleware để làm trung gian lấy dữ liệu được gửi đi từ phương thức POST
 app.use(
-  express.urlencoded({
-    extended: true, //Sửa lỗi warning body-parser
-  })
+    express.urlencoded({
+        extended: true, //Sửa lỗi warning body-parser
+    }),
 ); //Dạng Form
 app.use(express.json()); //Dạng JS: XTMLHttp, Fetch, Axios,...
 
 //Template Engine
 
 app.engine(
-  ".hbs",
-  handlebars({
-    extname: ".hbs",
-  })
+    '.hbs',
+    handlebars({
+        extname: '.hbs',
+    }),
 );
-app.set("view engine", ".hbs");
-app.set("views", path.join(__dirname, "resources/views"));
+app.set('view engine', '.hbs');
+app.set('views', path.join(__dirname, 'resources/views'));
 
 //Start Server With Express
 //Hiển thị nội dung ra màn hình
@@ -53,5 +53,5 @@ route(app);
 
 //Tạo Port cho web
 app.listen(port, () => {
-  console.log(`Example app listening at http://localhost:${port}`);
+    console.log(`Example app listening at http://localhost:${port}`);
 });
