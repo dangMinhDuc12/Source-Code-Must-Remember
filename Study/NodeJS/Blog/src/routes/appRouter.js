@@ -1,5 +1,6 @@
 const newsRouter = require('./newsRouter');
 const siteRouter = require('./siteRouter');
+const coursesRouter = require('./coursesRouter');
 
 function route(app) {
     //Cách 1
@@ -19,6 +20,7 @@ function route(app) {
     //Cách 2
 
     app.use('/news', newsRouter);
+    app.use('/courses', coursesRouter);
     app.use('/', siteRouter);
 
     // //Tạo đường dẫn(route) cho POST

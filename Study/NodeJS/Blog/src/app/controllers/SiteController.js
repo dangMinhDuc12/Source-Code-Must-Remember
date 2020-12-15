@@ -1,4 +1,4 @@
-const Course = require('../models/course.js');
+const Course = require('../models/courseModel.js');
 const { mutipleMongooseToObject } = require('../../ulti/mongoose.js'); //chỉ export hàm này mà không export hàm còn lại
 
 class SiteController {
