@@ -18,10 +18,10 @@ const app = express();
 const port = 3000;
 
 //Call routes từ file routes
-const route = require('./routes/route_function.js');
+const route = require('./routes/appRouter.js');
 
 //Import DB
-const db = require('./config/db/db_index.js');
+const db = require('./config/db/connectDB.js');
 
 //Connect to DB
 db.connect();

@@ -1,5 +1,5 @@
-const newsRouter = require('./news');
-const siteRouter = require('./site');
+const newsRouter = require('./newsRouter');
+const siteRouter = require('./siteRouter');
 
 function route(app) {
     //Cách 1
