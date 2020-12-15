@@ -49,7 +49,7 @@ app.engine(
     }),
 );
 app.set('view engine', '.hbs');
-app.set('views', path.join(__dirname, 'resources/views'));
+app.set('views', path.join(__dirname, 'app/views'));
 
 //Start Server With Express
 //Hiển thị nội dung ra màn hình

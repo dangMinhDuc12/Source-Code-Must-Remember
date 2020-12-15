@@ -23,9 +23,10 @@ class SiteController {
         Course.find({})
             .then((courses) => {
                 // courses = courses.map(courses => courses.toObject()) //biến courses cũ thành một mảng mới được convert thành object bình thường
-
+                courses = mutipleMongooseToObject(courses);
                 res.render('home', {
-                    courses: mutipleMongooseToObject(courses),
+                    courses,
+                    // courses: mutipleMongooseToObject(courses),
                 });
             })
             .catch(next);
