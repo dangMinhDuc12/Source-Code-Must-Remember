@@ -1,6 +1,7 @@
 const newsRouter = require('./newsRouter');
 const siteRouter = require('./siteRouter');
 const coursesRouter = require('./coursesRouter');
+const meRouter = require('./meRouter');
 
 function route(app) {
     //Cách 1
@@ -18,7 +19,7 @@ function route(app) {
     // });
 
     //Cách 2
-
+    app.use('/me', meRouter);
     app.use('/news', newsRouter);
     app.use('/courses', coursesRouter);
     app.use('/', siteRouter);

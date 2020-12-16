@@ -1,0 +1,80 @@
+<div class="mt-4">
+  <h3>Khóa học của tôi</h3>
+
+
+    <table class="table mt-4">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Tên khóa học</th>
+          <th scope="col">Mô tả</th>
+          <th scope="col"></th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each courses}}
+        <tr>
+          <th scope="row">{{sum @index 1}}</th>
+          <td>{{this.name}}</td>
+          <td>{{this.description}}</td>
+          <td>
+            <a href="/courses/{{this._id}}/edit" class="btn btn-success">Sửa</a>
+          </td>
+          <td>
+            <form method="POST" action="/courses/{{this._id}}?_method=DELETE">
+              <button type="submit" class="btn btn-danger">Xóa</button>
+            
+            </form>
+        </tr>
+        {{/each}}
+      </tbody>
+  </table>
+</div>
+
+{{!-- Xác nhận xóa --}}
+{{!-- <div class="modal" tabindex="-1" role="dialog" id="delete-courses-modal" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Hộp thoại xác nhận</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Bạn có xác nhận xóa ?</p>
+      </div>
+      <div class="modal-footer">
+        <button id="btn-delete-course" type="button" class="btn btn-danger">Có</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Không</button>
+      </div>
+    </div>
+  </div>
+</div> --}}
+
+{{!-- Cách 2 khi có hộp thoại --}}
+{{!-- Delete hidden form --}}
+{{!-- <form method="POST" name="delete-course-form"></form> --}}
+
+{{!-- Cách 2 khi có hộp thoại --}}
+{{!-- 
+ //Khi DOM chạy xong mới lọt vào callback function dưới
+  document.addEventListener('DOMContentLoaded',function() {
+    var courseId;
+    var deleteForm = document.forms["delete-course-form"];
+    var btnDeleteCourse = document.getElementById('btn-delete-course');
+
+  //Khi modal được show lên sẽ lọt vào sự kiện dưới
+    $('#delete-courses-modal').on('show.bs.modal', function (event) {
+    var button = $(event.relatedTarget) ;
+    courseId = button.data('id') ;
+    })
+
+    
+    btnDeleteCourse.onclick = function() {
+    deleteForm.action = `/courses/${courseId}?_method=DELETE`;
+    deleteForm.submit(); //phương thức giúp submit form
+  }
+    
+  })  --}}

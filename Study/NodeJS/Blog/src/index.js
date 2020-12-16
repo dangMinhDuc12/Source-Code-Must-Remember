@@ -12,6 +12,7 @@ const path = require('path');
 const express = require('express');
 const morgan = require('morgan');
 const handlebars = require('express-handlebars');
+const methodOverride = require('method-override'); //sửa lại method khi gửi form Data
 //Call Express
 const app = express();
 //Init Port
@@ -25,6 +26,9 @@ const db = require('./config/db/connectDB.js');
 
 //Connect to DB
 db.connect();
+
+//override method của thẻ form
+app.use(methodOverride('_method'));
 
 //Dùng các file tĩnh (static file) như là img hay css
 app.use(express.static(path.join(__dirname, 'public')));
@@ -46,6 +50,9 @@ app.engine(
     '.hbs',
     handlebars({
         extname: '.hbs',
+        helpers: {
+            sum: (a, b) => a + b,
+        },
     }),
 );
 app.set('view engine', '.hbs');
