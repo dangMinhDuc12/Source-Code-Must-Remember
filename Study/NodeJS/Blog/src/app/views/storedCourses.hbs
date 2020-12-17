@@ -1,20 +1,53 @@
-<div class="mt-4">
-  <h3>Khóa học của tôi</h3>
+<form name="container-form" class="mt-4" method="POST" action="/courses/handle-form-actions">
+
+  <div>
+      <h3>Khóa học của tôi</h3>
+      <a class ="trash" href="/me/trash/courses">
+      
+      Thùng rác
+      <span class= "trash__deleted-course">{{deletedCourses}}</span>
+      </a>
+
+      <div class="mt-4 d-flex align-items-center">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="" id="checkbox-all">
+          <label class="form-check-label" for="checkbox-all">
+            Chọn tất cả
+          </label>
+        </div>
+        <select class="form-control form-control-sm checkbox-select-all-options " name="action" required>
+        <option value = "">-- Chọn hành động</option>
+        <option value = "delete">Xóa</option>
+        
+        </select>
+
+
+        <button class="btn btn-primary btn-sm disabled btn-check-all-submit">Thực hiện</button>
+        
+      </div>
+     
+  </div>
 
 
     <table class="table mt-4">
       <thead>
         <tr>
-          <th scope="col">#</th>
+          <th scope="col" colspan="2">#</th>
           <th scope="col">Tên khóa học</th>
           <th scope="col">Mô tả</th>
-          <th scope="col"></th>
-          <th scope="col"></th>
+          <th scope="col" colspan="2">Công cụ</th>
+          
         </tr>
       </thead>
       <tbody>
         {{#each courses}}
         <tr>
+          <td>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" name = "courseIds[]" value="{{this._id}}" >
+              
+            </div>
+        </td>
           <th scope="row">{{sum @index 1}}</th>
           <td>{{this.name}}</td>
           <td>{{this.description}}</td>
@@ -27,10 +60,66 @@
             
             </form>
         </tr>
+
+        {{else}}
+          <tr>
+            <td colspan="5" class="text-center">Bạn chưa đăng khóa học nào.
+              <a href="/courses/creat">Đăng khóa học</a>
+            </td>
+          </tr>
         {{/each}}
       </tbody>
   </table>
-</div>
+</form>
+
+<script>
+  //Dùng Jquery
+  document.addEventListener('DOMContentLoaded',function() {
+    var checkboxAll = $('#checkbox-all');
+    var BtnCheckAllSubmit = $('.btn-check-all-submit');
+    var containerForm = document.forms['container-form'];
+    var courseItemCheckbox = $('input[name = "courseIds[]"]');
+    
+    //Checkbox All change
+    checkboxAll.change(function() {
+      var isCheckedAll = $(this).prop('checked'); //Kiểm tra xem checkbox đã check chưa trả về Boolean
+      courseItemCheckbox.prop('checked',isCheckedAll)
+      renderCheckAllSubmitBtn()
+    
+    })
+
+    //Course item checkbox change
+    courseItemCheckbox.change(function() {
+      var courseItemCheckedAll = courseItemCheckbox.length === $('input[name = "courseIds[]"]:checked').length //kiểm tra  length của số ô đã check và length của các ô checkbox 
+      checkboxAll.prop('checked', courseItemCheckedAll);
+      renderCheckAllSubmitBtn()
+    })
+
+  //Render lại check all submit btn
+    function renderCheckAllSubmitBtn() {
+      var checkedCount =  $('input[name = "courseIds[]"]:checked').length
+      if(checkedCount > 0) {
+        BtnCheckAllSubmit.removeClass('disabled')
+      }
+      else {
+        BtnCheckAllSubmit.addClass('disabled')
+      }
+    }
+
+    //Lắng nghe sự kiện onclick nếu mà có class disabled thì ko submit
+    BtnCheckAllSubmit.on('submit',function(e) {
+      var isSubmitable = $(this).hasClass('disabled');
+      if(isSubmitable) {
+      e.preventDefault();
+    }
+    })
+  })
+  
+</script>
+
+
+
+
 
 {{!-- Xác nhận xóa --}}
 {{!-- <div class="modal" tabindex="-1" role="dialog" id="delete-courses-modal" aria-labelledby="exampleModalLabel" aria-hidden="true">

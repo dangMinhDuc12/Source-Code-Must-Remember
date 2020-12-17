@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const slug = require('mongoose-slug-generator'); //plugin giúp tự động thêm field slug trùng với name
+const mongooseDelete = require('mongoose-delete');
 mongoose.plugin(slug);
 const Schema = mongoose.Schema;
 
@@ -15,5 +16,10 @@ const Course = new Schema(
     },
     { collection: 'courses' },
 ); // thêm option collection để viết tên cho collection của mình, không cho mongoose tự động thay đổi tên của collection nữa
+
+Course.plugin(mongooseDelete, {
+    overrideMethods: 'all',
+    deletedAt: true,
+});
 
 module.exports = mongoose.model('courses', Course);
