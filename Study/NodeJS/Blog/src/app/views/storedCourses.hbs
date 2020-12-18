@@ -15,14 +15,14 @@
             Chọn tất cả
           </label>
         </div>
-        <select class="form-control form-control-sm checkbox-select-all-options " name="action" required>
+        <select class="form-control form-control-sm checkbox-select-all-options " name="action" required = "required">
         <option value = "">-- Chọn hành động</option>
         <option value = "delete">Xóa</option>
         
         </select>
 
 
-        <button class="btn btn-primary btn-sm disabled btn-check-all-submit">Thực hiện</button>
+        <button class="btn btn-primary btn-sm  btn-check-all-submit" disabled="disabled">Thực hiện</button>
         
       </div>
      
@@ -76,9 +76,11 @@
   //Dùng Jquery
   document.addEventListener('DOMContentLoaded',function() {
     var checkboxAll = $('#checkbox-all');
-    var BtnCheckAllSubmit = $('.btn-check-all-submit');
-    var containerForm = document.forms['container-form'];
+    var btnCheckAllSubmit = $('.btn-check-all-submit');
+   // var containerForm = document.forms['container-form']
+    var containerForm = $("form[name = 'container-form']");
     var courseItemCheckbox = $('input[name = "courseIds[]"]');
+    console.log(containerForm)
     
     //Checkbox All change
     checkboxAll.change(function() {
@@ -99,25 +101,32 @@
     function renderCheckAllSubmitBtn() {
       var checkedCount =  $('input[name = "courseIds[]"]:checked').length
       if(checkedCount > 0) {
-        BtnCheckAllSubmit.removeClass('disabled')
+        btnCheckAllSubmit.attr('disabled',false);
       }
       else {
-        BtnCheckAllSubmit.addClass('disabled')
+        btnCheckAllSubmit.attr('disabled',true);
       }
     }
-
-    //Lắng nghe sự kiện onclick nếu mà có class disabled thì ko submit
-    BtnCheckAllSubmit.on('submit',function(e) {
-      var isSubmitable = $(this).hasClass('disabled');
-      if(isSubmitable) {
-      e.preventDefault();
-    }
-    })
+  //Cách 2 thêm attr disabled vào thẻ button rồi sau đó add và remove attribute ở function trên
+    
   })
+
+
   
 </script>
 
 
+
+
+{{!-- cách 1
+Lắng nghe sự kiện onsubmit của thẻ form nếu mà  button thực hiện có class disabled thì ko submit
+    containerForm.on('submit',function(e) {
+      var isSubmitable = BtnCheckAllSubmit.hasClass('disabled');
+      if(isSubmitable) {
+      e.preventDefault();
+    }
+    }) --}}
+  
 
 
 
