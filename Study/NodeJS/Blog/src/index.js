@@ -16,7 +16,7 @@ const methodOverride = require('method-override'); //sửa lại method khi gử
 //Call Express
 const app = express();
 //Init Port
-const port = 3000;
+const port = process.env.port;
 
 //Call routes từ file routes
 const route = require('./routes/appRouter.js');
