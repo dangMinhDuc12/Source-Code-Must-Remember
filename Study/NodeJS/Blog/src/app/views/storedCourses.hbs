@@ -28,13 +28,20 @@
      
   </div>
 
-
+  
     <table class="table mt-4">
       <thead>
         <tr>
           <th scope="col" colspan="2">#</th>
-          <th scope="col">Tên khóa học</th>
-          <th scope="col">Mô tả</th>
+          <th scope="col">
+            Tên khóa học
+            {{{sortable 'name' _sort}}}
+            
+          </th>
+          <th scope="col">
+            Mô tả
+            {{{sortable 'description' _sort}}}
+          </th>
           <th scope="col" colspan="2">Công cụ</th>
           
         </tr>

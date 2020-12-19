@@ -4,8 +4,18 @@ const { mutipleMongooseToObject } = require('../../ulti/mongoose.js');
 class MeController {
     //[GET] /me/stored/courses
     storedCourses(req, res, next) {
+        //Cách 1
+        let courseQuery = Course.find({});
+
+        if (req.query.hasOwnProperty('_sort')) {
+            courseQuery = courseQuery.sort({
+                //phương thức sort giúp ta có thể sort tăng dần, giảm dần
+                [req.query.column]: req.query.type,
+            });
+        }
+
         //Promise.all: Chạy cả 2 promise cùng lúc nếu xong mới lọt vào .then, như thế sẽ không sợ một thằng xong trước mà thằng kia chưa xong dẫn đến lỗi
-        Promise.all([Course.find({}), Course.countDocumentsDeleted()])
+        Promise.all([courseQuery, Course.countDocumentsDeleted()])
             .then(([courses, deletedCourses]) => {
                 res.render('storedCourses', {
                     courses: mutipleMongooseToObject(courses),
