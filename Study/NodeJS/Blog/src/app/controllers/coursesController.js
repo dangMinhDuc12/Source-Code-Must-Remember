@@ -25,7 +25,7 @@ class CoursesController {
         course
             .save()
             .then(() => res.redirect('/me/stored/courses')) //Chuyển hướng trang khi save thành công
-            .catch((error) => {});
+            .catch(next);
     }
 
     //[GET] /courses/:id/edit

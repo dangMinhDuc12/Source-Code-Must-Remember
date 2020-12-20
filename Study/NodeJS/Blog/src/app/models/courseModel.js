@@ -6,6 +6,7 @@ const Schema = mongoose.Schema;
 
 const Course = new Schema(
     {
+        // _id: { type: Number}, thêm vào nếu muốn sửa id trong MongoDB thành number integer
         name: { type: String },
         description: { type: String },
         image: { type: String },
@@ -14,8 +15,24 @@ const Course = new Schema(
         createdAt: { type: Date, default: Date.now },
         updatedAt: { type: Date, default: Date.now },
     },
-    { collection: 'courses' },
+    {
+        collection: 'courses',
+        // _id: false, thêm vào nếu muốn sửa id trong MongoDB thành number integer
+        // timestamps: true //tự động thêm thời gian
+    },
 ); // thêm option collection để viết tên cho collection của mình, không cho mongoose tự động thay đổi tên của collection nữa
+
+//Tạo ra phương thức sortable để có thể sort ở nhiều nơi
+Course.query.sortable = function (req) {
+    if (req.query.hasOwnProperty('_sort')) {
+        const isValidType = ['asc', 'desc'].includes(req.query.type);
+        return this.sort({
+            //phương thức sort giúp ta có thể sort tăng dần, giảm dần
+            [req.query.column]: isValidType ? req.query.type : 'desc',
+        });
+    }
+    return this; //this ở đây chính là những thằng đang được query bên controller
+};
 
 Course.plugin(mongooseDelete, {
     overrideMethods: 'all',
