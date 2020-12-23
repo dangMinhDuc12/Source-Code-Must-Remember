@@ -26,6 +26,19 @@ function renderCafe(doc) {
   })
 
   //Sửa dữ liệu giống delete truyền vào id và truyền vào method update() object với các field thay đổi, set() khác với update là nó sẽ ghi đè data cũ và tạo ra data mới
+          // updating records (console demo)
+          // db.collection('cafes').doc('DOgwUvtEQbjZohQNIeMr').update({
+          //     name: 'mario world'
+          // });
+
+          // db.collection('cafes').doc('DOgwUvtEQbjZohQNIeMr').update({
+          //     city: 'hong kong'
+          // });
+
+          // setting data
+          // db.collection('cafes').doc('DOgwUvtEQbjZohQNIeMr').set({
+          //     city: 'hong kong'
+          // });
 }
 
 //Đọc dữ liệu với firebase: get(), orderBy(): sắp xếp theo alphabet các dữ liệu lấy ra
