@@ -44,7 +44,7 @@ function renderCafe(doc) {
 //Đọc dữ liệu với firebase: get(), orderBy(): sắp xếp theo alphabet các dữ liệu lấy ra
 // db.collection('cafes').orderBy('name').get()
 //       .then((snapshot) => {
-//           snapshot.forEach((doc) => {
+//           snapshot.docs.forEach((doc) => {
 //             renderCafe(doc);
 //           })
 //       })
@@ -52,7 +52,7 @@ function renderCafe(doc) {
 //Query method: where(), chỉ dùng ==
 // db.collection('cafes').where('city', '==', 'Hà Nội').get()
 //         .then((snapshot) => {
-//           snapshot.forEach((doc) => {
+//           snapshot.docs.forEach((doc) => {
 //             renderCafe(doc);
 //           })
 //         })
