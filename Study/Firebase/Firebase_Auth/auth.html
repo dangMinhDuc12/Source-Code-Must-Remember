@@ -14,20 +14,20 @@
           <img src="img/logo.svg" style="width: 180px; margin-top: 10px;">
         </a>
         <ul id="nav-mobile" class="right hide-on-med-and-down">
-            <li class="logged-in">
-              <a href="#" class="grey-text modal-trigger" data-target="modal-account">Account</a>
+            <li class="logged-in" style="display: none;" >
+              <a href="#" class="grey-text modal-trigger" data-target="modal-account">Tài khoản</a>
             </li>
-            <li class="logged-in">
-              <a href="#" class="grey-text" id="logout">Logout</a>
+            <li class="logged-in" style="display: none;" >
+              <a href="#" class="grey-text" id="logout">Đăng xuất</a>
             </li>
-            <li class="logged-in">
-              <a href="#" class="grey-text modal-trigger" data-target="modal-create">Create Guide</a>
+            <li class="logged-in" style="display: none;" >
+              <a href="#" class="grey-text modal-trigger" data-target="modal-create">Tạo Guide mới</a>
             </li>
-            <li class="logged-out">
-              <a href="#" class="grey-text modal-trigger" data-target="modal-login">Login</a>
+            <li class="logged-out" style="display: none;" >
+              <a href="#" class="grey-text modal-trigger" data-target="modal-login">Đăng nhập</a>
             </li>
-            <li class="logged-out">
-              <a href="#" class="grey-text modal-trigger" data-target="modal-signup">Sign up</a>
+            <li class="logged-out" style="display: none;" >
+              <a href="#" class="grey-text modal-trigger" data-target="modal-signup">Đăng ký</a>
             </li>
           
         </ul>
@@ -41,11 +41,15 @@
         <form id="signup-form">
           <div class="input-field">
             <input type="email" id="signup-email" required />
-            <label for="signup-email">Email address</label>
+            <label for="signup-email">Email của bạn</label>
           </div>
           <div class="input-field">
             <input type="password" id="signup-password" required />
-            <label for="signup-password">Choose password</label>
+            <label for="signup-password">Password của bạn</label>
+          </div>
+          <div class="input-field">
+            <input type="text" id="signup-bio" required />
+            <label for="signup-bio">Mô tả ngắn về bạn</label>
           </div>
           <button class="btn yellow darken-2 z-depth-0">Sign up</button>
         </form>
@@ -74,7 +78,7 @@
     <!-- ACCOUNT MODAL -->
   <div id="modal-account" class="modal">
     <div class="modal-content center-align">
-      <h4>Account details</h4><br />
+      <h4>Thông tin tài khoản</h4><br />
       <div class="account-details"></div>
     </div>
   </div>
@@ -86,13 +90,13 @@
       <form id="create-form">
         <div class="input-field">
           <input type="text" id="title" required>
-          <label for="title">Guide Title</label>
+          <label for="title">Tiêu đề</label>
         </div>
         <div class="input-field">
           <textarea id="content" class="materialize-textarea" required></textarea>
-          <label for="content">Guide Content</label>
+          <label for="content">Nội dung</label>
         </div>
-        <button class="btn yellow darken-2 z-depth-0">Create</button>
+        <button class="btn yellow darken-2 z-depth-0">Tạo mới</button>
       </form>
     </div>
   </div>

@@ -9,7 +9,7 @@ function renderCafe(doc) {
   let deleteBtn = document.createElement('div');
   
 
-  li.setAttribute('data-id', doc.id);
+  li.setAttribute('data-id', doc.uid);
   name.textContent = doc.data().name;
   city.textContent = doc.data().city;
   deleteBtn.textContent = 'Xóa';
@@ -41,13 +41,14 @@ function renderCafe(doc) {
           // });
 }
 
-//Đọc dữ liệu với firebase: get(), orderBy(): sắp xếp theo alphabet các dữ liệu lấy ra
-// db.collection('cafes').orderBy('name').get()
-//       .then((snapshot) => {
-//           snapshot.docs.forEach((doc) => {
-//             renderCafe(doc);
-//           })
-//       })
+// Đọc dữ liệu với firebase: get(), orderBy(): sắp xếp theo alphabet các dữ liệu lấy ra
+db.collection('cafes').orderBy('name').get()
+      .then((snapshot) => {
+          snapshot.docs.forEach((doc) => {
+            console.log(doc);
+            renderCafe(doc);
+          })
+      })
 
 //Query method: where(), chỉ dùng ==
 // db.collection('cafes').where('city', '==', 'Hà Nội').get()
@@ -61,6 +62,7 @@ function renderCafe(doc) {
 form.addEventListener('submit', (e) => {
   e.preventDefault();
   db.collection('cafes').add({
+    //Lấy các thẻ input từ thẻ form từ name
     name: form.name.value,
     city: form.city.value,
   })
@@ -70,18 +72,18 @@ form.addEventListener('submit', (e) => {
 
 
 //Realtime dùng onSnapshot() nếu đang còn trong data type là added, bị xóa là removed, còn chỉnh sửa là modified
-db.collection('cafes')
-      .onSnapshot(snapshot => {
-        let changes = snapshot.docChanges();
-        changes.forEach(change => {
-          if(change.type === 'added') {
-            renderCafe(change.doc);
-          }
-          else if(change.type === 'removed') {
-            let li = cafeList.querySelector(`[data-id = '${change.doc.id}']`);
-            cafeList.removeChild(li);
-          }
-        })
-      })
+// db.collection('cafes')
+//       .onSnapshot(snapshot => {
+//         let changes = snapshot.docChanges();
+//         changes.forEach(change => {
+//           if(change.type === 'added') {
+//             renderCafe(change.doc);
+//           }
+//           else if(change.type === 'removed') {
+//             let li = cafeList.querySelector(`[data-id = '${change.doc.id}']`);
+//             cafeList.removeChild(li);
+//           }
+//         })
+//       })
 
 
