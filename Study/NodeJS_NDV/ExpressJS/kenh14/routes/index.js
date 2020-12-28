@@ -3,7 +3,30 @@ var router = express.Router();
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
+  res.render('clean_blog/index');
 });
+router.get('/index.html', function(req, res, next) {
+  res.render('index');
+});
+
+// router.get('/tin-tuc', function(req, res, next) {
+//   res.render('tin', { title: 'tin tức', content: 'Tin tức ngày hôm nay'});
+// });
+
+// router.get('/test-json', function(req, res, next) {
+//   var list =  {listStudent: ['Đức', 'Hùng', 'Quân']} ;
+//   res.render('json', {content: list });
+// });
+
+router.get('/about.html', function(req, res, next) {
+  res.render('clean_blog/about');
+});
+router.get('/post.html', function(req, res, next) {
+  res.render('clean_blog/post');
+});
+router.get('/contact.html', function(req, res, next) {
+  res.render('clean_blog/contact');
+});
+
 
 module.exports = router;
