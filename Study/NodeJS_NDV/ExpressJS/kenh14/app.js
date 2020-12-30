@@ -2,11 +2,14 @@ var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
+var session = require('express-session');
 var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-var testRouter = require('./routes/test_router')
+var testRouter = require('./routes/test_router');
+var cookieRouter = require('./routes/cookie.js');
+var sessionRouter = require('./routes/express_session.js');
 
 var app = express();
 
@@ -18,11 +21,22 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
+
+//Xóa cookie: {secure: true} vì chỉ sử dụng đc với giao thức HTTPS
+app.use(session({
+  secret: 'dmd',
+  resave: false,
+  saveUninitialized: true
+  
+}));
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/test', testRouter);
+app.use('/cookie', cookieRouter);
+app.use('/session', sessionRouter);
+
 
 
 // catch 404 and forward to error handler
