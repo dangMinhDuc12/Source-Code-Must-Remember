@@ -1,0 +1,38 @@
+{
+  "sanpham": [
+    {
+      "id": 1,
+      "title": "Iphone",
+      "background": "/img/Iphone/bg.jpg",
+      "img": ["/img/Iphone/1.jpg", "/img/Iphone/2.png"],
+      "description": "Hãng điện thoại nổi tiếng thế giới",
+      "client": "Viettel",
+      "role": "Design",
+      "category": "Điện thoại",
+      "link": "https://www.apple.com/"
+    },
+    {
+      "id": 2,
+      "title": "Samsung",
+      "background": "/img/Samsung/bg.jpg",
+      "img": ["/img/Iphone/1.jpg", "/img/Iphone/2.jpg"],
+      "description": "Hãng điện thoại nổi tiếng Hàn Quốc",
+      "client": "FPT",
+      "role": "Front-end",
+      "category": "Phone",
+      "link": "https://www.samsung.com/vn/"
+    },
+    {
+      "id": 3,
+      "title": "Realme",
+      "background": "/img/Realme/bg.jpg",
+      "img": ["/img/Realme/1.jpg", "/img/Realme/2.jpg"],
+      "description": "Hãng điện thoại nổi tiếng Trung Quốc",
+      "client": "VNPT",
+      "role": "Back-end",
+      "category": "Mobile",
+      "link": "https://realmemobile.vn/"
+    }
+  ]
+  
+}
