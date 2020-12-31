@@ -8,14 +8,14 @@
       "description": "Hãng điện thoại nổi tiếng thế giới",
       "client": "Viettel",
       "role": "Design",
-      "category": "Điện thoại",
+      "category": "Tablet",
       "link": "https://www.apple.com/"
     },
     {
       "id": 2,
       "title": "Samsung",
       "background": "/img/Samsung/bg.jpg",
-      "img": ["/img/Iphone/1.jpg", "/img/Iphone/2.jpg"],
+      "img": ["/img/Samsung/1.jpg", "/img/Samsung/2.jpg"],
       "description": "Hãng điện thoại nổi tiếng Hàn Quốc",
       "client": "FPT",
       "role": "Front-end",

@@ -45,4 +45,9 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
+//Đặt biến locals có tên fakeData để truy nhập đến db
+app.locals.fakeData = require('./model/db.json');
+
+
+
 module.exports = app;

@@ -23,21 +23,49 @@
 			<ul class="ish-portfolio-item ish-portfolio-filter">
 				<li class="ish-portfolio-filter__item ish-portfolio-filter--title"><h5>Filter:</h5></li>
 				<li class="ish-portfolio-filter__item"><a class="ish-portfolio-filter__link ish-portfolio-filter__link--active" href="#all">All</a></li>
-				<li class="ish-portfolio-filter__item"><a class="ish-portfolio-filter__link" href="#print">Print</a></li>
-				<li class="ish-portfolio-filter__item"><a class="ish-portfolio-filter__link" href="#identity">Identity</a></li>
-				<li class="ish-portfolio-filter__item"><a class="ish-portfolio-filter__link" href="#mockup">Mockup</a></li>
-				<li class="ish-portfolio-filter__item"><a class="ish-portfolio-filter__link" href="#application">Application</a></li>
+
+				<%
+					fakeData.sanpham.forEach(sp => {
+						%>
+						<li class="ish-portfolio-filter__item"><a class="ish-portfolio-filter__link" href="#<%= sp.category  %>"><%=  sp.category%></a></li>
+						<%
+					})
+				
+				%>
+			
+				
 			</ul>
-			<a class="ish-portfolio-item ish--tc13 ish-portfolio-print" href="/portfolio-detail1.html">
-				<div class="ish-portfolio-item__image-container">
-					<img class="ish-portfolio-item__image" src="/img/p1.jpg" alt="business cards">
-				</div>
-				<div class="ish-portfolio-item__desc">
-					<span class="ish-portfolio-item__title">Business Cards</span>
-					<span class="ish-portfolio-item__subtitle">Print</span>
-				</div>
-			</a>
-			<a class="ish-portfolio-item ish--tc7 ish-portfolio-identity" href="/portfolio-detail1.html">
+
+
+			<!-- Load data từ biến locals fakeData và render ra sản phẩm -->
+
+			<%
+					fakeData.sanpham.forEach(sp => {
+						%>
+
+						<a class="ish-portfolio-item ish--tc13 ish-portfolio-<%= sp.category%>" href="/portfolio-detail1.html/<%=sp.id %>">
+							<div class="ish-portfolio-item__image-container">
+								<img class="ish-portfolio-item__image" src="<%= sp.background  %>" alt="business cards">
+							</div>
+							<div class="ish-portfolio-item__desc">
+								<span class="ish-portfolio-item__title"><%= sp.title  %></span>
+								<span class="ish-portfolio-item__subtitle"><%= sp.category  %></span>
+							</div>
+						</a>
+
+
+
+						<% 
+					})
+			
+			
+			
+			%>
+	
+
+
+
+			<!-- <a class="ish-portfolio-item ish--tc7 ish-portfolio-identity" href="/portfolio-detail1.html">
 				<div class="ish-portfolio-item__image-container">
 					<img class="ish-portfolio-item__image" src="/img/p2.jpg" alt="the carpets are dirty">
 				</div>
@@ -99,7 +127,7 @@
 					<span class="ish-portfolio-item__title">Product Brochure</span>
 					<span class="ish-portfolio-item__subtitle">Print</span>
 				</div>
-			</a>
+			</a> -->
 
       <!-- main content end -->
 		</div>

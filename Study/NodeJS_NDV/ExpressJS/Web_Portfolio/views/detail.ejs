@@ -1,21 +1,21 @@
 <% include ./layouts/header %>
 
+<%
+    fakeData.sanpham.forEach(sp => {
 
-
-
-        <!-- lead -->
-        <div class="ish-row ish-fullrow ish-lead">
-            <span class="ish-lead__caption ish-icon-up">Featured Image</span>
+        if(id == sp.id ) {
+            %>
+                <!-- lead -->
+          <div class="ish-row ish-fullrow ish-lead">
+            <span class="ish-lead__caption ish-icon-up">Ảnh bìa</span>
             <div class="ish-lead__image">
-                <img src="/img/header2.jpg" alt="wawererly design">
+                <img src="<%= sp.background%>" alt="wawererly design">
             </div>
             <h1 class="ish-lead__headline">
-				<span class="ish-lead__headline-inner">Wawererly<br>Design</span>
+				<span class="ish-lead__headline-inner"><%= sp.title%><br><%= sp.category%></span>
             </h1>
         </div>
         <!-- lead end -->
-
-
 
         <!-- content -->
         <div class="ish-row ish-content">
@@ -24,30 +24,28 @@
 
                 <!-- side content -->
                 <p>
-                    An illustration is a visualization or a depiction made by an artist, such as a drawing,
-                    sketch, painting, photograph, or other kind of image of things seen, remembered or imagined,
-                    using a graphical representation.
+                    <%= sp.description%>
                 </p>
                 <p>
-                    The word comes from the latin word illustra’tio, illu’stro meaning enlighten, irradiate.
+                    <%= sp.description%>
                 </p>
 
                 <ul class="ish-sidebar-mdata post-meta">
                     <li class="ish-sidebar-mdata__item">
-                        <strong class="ish-sidebar-mdata__title post-meta-key">Client</strong>
-                        IshYoBoy
+                        <strong class="ish-sidebar-mdata__title post-meta-key">Khách hàng</strong>
+                        <%= sp.client%>
                     </li>
                     <li class="ish-sidebar-mdata__item">
-                        <strong class="ish-sidebar-mdata__title post-meta-key">Work Done</strong>
-                        Website, Logotype, Visual Identity
+                        <strong class="ish-sidebar-mdata__title post-meta-key">Vai trò</strong>
+                        <%= sp.role%>
                     </li>
                     <li class="ish-sidebar-mdata__item">
                         <strong class="ish-sidebar-mdata__title post-meta-key">Category</strong>
-                        <a href="#">Website</a>
+                        <a href=" <%= sp.link%>">Website</a>
                     </li>
                     <li class="ish-sidebar-mdata__item">
                         <strong class="ish-sidebar-mdata__title post-meta-key">Link</strong>
-                        <a href="https://ishyoboy.com" target="_blank">ishyoboy.com</a>
+                        <a href="https://ishyoboy.com" target="_blank"> <%= sp.link%></a>
                     </li>
                 </ul>
 
@@ -88,25 +86,42 @@
             </div>
 
             <div class="ish-col-xs-12 ish-col-sm-7 ish-col-sm-offset-1 ish-content__main">
-
-                <!-- main content -->
-                <a class="ish-image ish-lightbox" href="/img/pflo1.jpg">
-                    <img class="ish-image__image" src="/img/pflo1.jpg" alt="logotype design">
-                    <span class="ish-image__caption">Logotype Design</span>
-                </a>
-                <a class="ish-image ish-lightbox" href="/img/pflo2.jpg">
-                    <img class="ish-image__image" src="/img/pflo2.jpg" alt="our company">
-                </a>
-                <a class="ish-image ish-lightbox" href="/img/pflo3.jpg">
-                    <img class="ish-image__image" src="/img/pflo3.jpg" alt="brochure design">
-                    <span class="ish-image__caption">Brochure Design</span>
-                </a>
-                <!-- main content end -->
+                <%
+                    sp.img.forEach((img,index) => {
+                        %>
+                        <a class="ish-image ish-lightbox" href="<%=img%>">
+                            <img class="ish-image__image" src="<%=img%>" alt="logotype design">
+                            <span class="ish-image__caption">Ảnh số <%=index+1%></span>
+                        </a>
+                        <%
+                    })
+                
+                %>
+               
 
             </div>
 
         </div>
         <!-- content end -->
+
+
+            <%
+        }
+        
+
+          
+        
+    })
+
+
+%>
+
+
+      
+
+
+
+        
 
 
       <% include ./layouts/footer %>

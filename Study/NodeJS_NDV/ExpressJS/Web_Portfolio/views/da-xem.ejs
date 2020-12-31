@@ -1,0 +1,41 @@
+
+ <% include ./layouts/header %>
+
+
+
+
+
+ <div class="ish-row ish-content ish-portfolio ish-macy">
+
+    <%
+      list.forEach(w => {
+        fakeData.sanpham.forEach(sp => {
+          if(sp.id == w) {
+            %>
+            <a class="ish-portfolio-item ish--tc13 ish-portfolio-<%= sp.category%>" href="/portfolio-detail1.html/<%=sp.id %>">
+							<div class="ish-portfolio-item__image-container">
+								<img class="ish-portfolio-item__image" src="<%= sp.background  %>" alt="business cards">
+							</div>
+							<div class="ish-portfolio-item__desc">
+								<span class="ish-portfolio-item__title"><%= sp.title  %></span>
+								<span class="ish-portfolio-item__subtitle"><%= sp.category  %></span>
+							</div>
+						</a>
+            <%
+
+          }
+
+        })
+       
+          
+						
+        
+      })
+    
+    %>
+
+</div> 
+
+
+<% include ./layouts/footer %> 
+
