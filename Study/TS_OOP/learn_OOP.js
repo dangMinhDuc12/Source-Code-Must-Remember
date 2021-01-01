@@ -1,50 +1,175 @@
-var NhanVatGame = /** @class */ (function () {
-    //Method phải có: constructor
-    function NhanVatGame(tenNhanVat, slogan, mau) {
-        //this ở đây là những đối tượng được tạo ra sẽ có property là thế này
-        this.tenNhanVat = tenNhanVat;
-        this.slogan = slogan;
-        this.mau = mau;
+// class NhanVatGame {
+//   //Property
+//   tenNhanVat: string;
+//   slogan: string;
+//   mau: number;
+//   //Method phải có: constructor
+//   constructor(tenNhanVat: string, slogan: string, mau: number) {
+//     //this ở đây là những đối tượng được tạo ra sẽ có property là thế này
+//     this.tenNhanVat = tenNhanVat;
+//     this.slogan = slogan;
+//     this.mau = mau;
+//   }
+//   //Method
+//   hienthiten() {
+//     //this ở đây là đối tượng gọi đến method này
+//     return `Tên nhân vật là: ${this.tenNhanVat}`;
+//   }
+// }
+// //Từ khóa new để gọi hàm constructor khởi tạo đối tượng
+// var garen = new NhanVatGame("Garen", "Đồ tể", 700);
+// class Dienthoai {
+//   ten: string;
+//   gia: number;
+//   sao: number;
+//   mauSac: string[];
+//   constructor(ten: string, gia: number, sao: number, mauSac: string[]) {
+//     this.ten = ten;
+//     this.gia = gia;
+//     this.sao = sao;
+//     this.mauSac = mauSac;
+//   }
+//   showNoiDung() {
+//     return `Sản phẩm này có tên là ${this.ten} có giá là ${this.gia} có số sao đánh giá là ${this.sao} và có ${this.mauSac.length} màu`;
+//   }
+// }
+// var sp1 = new Dienthoai("Iphone", 10000000, 5, ["Đen", "Đỏ", "Vàng"]);
+// var sp2 = new Dienthoai("Samsung", 20000, 4, ["Xanh", "Cam", "Bạc"]);
+// console.log(sp1.showNoiDung());
+// console.log(sp2.showNoiDung());
+// //Cách dùng kiểu enum và từ khóa static
+// enum state {
+//   Creat = 10,
+//   Processing,
+//   Finish,
+// }
+// class Congviec {
+//   id: number;
+//   ten1: string;
+//   static ten: string = "Quan";
+//   trangthai: state;
+//   constructor(id: number, ten: string, trangthai: state) {
+//     this.id = id;
+//     this.ten1 = ten;
+//     this.trangthai = trangthai;
+//   }
+//   static testStatic() {
+//     console.log("hello, this is static function");
+//   }
+// }
+// var cv1 = new Congviec(1, "Coder", state.Processing);
+// console.log(cv1);
+// Congviec.testStatic();
+// //Cách khai báo class con và cách dùng từ khóa super
+// class Tuong {
+//   ten: string;
+//   moTaTuong: string;
+//   kyNang: string[];
+//   constructor(ten: string, moTaTuong: string, kyNang: string[]) {
+//     this.ten = ten;
+//     this.moTaTuong = moTaTuong;
+//     this.kyNang = kyNang;
+//   }
+//   showThongTin() {
+//     var knMang: string[] = this.kyNang.map(
+//       (value, index) => `Kỹ năng ${index + 1}: ${value}`
+//     );
+//     var knChuoi: string = knMang.join(",");
+//     return `Tên tướng: ${this.ten}
+// Mô tả tướng: ${this.moTaTuong}
+// Các Kỹ năng của tướng: ${knChuoi}`;
+//   }
+// }
+// class SatThu extends Tuong {
+//   donSatThu: string;
+//   constructor(
+//     ten: string,
+//     moTaTuong: string,
+//     kyNang: string[],
+//     donSatThu: string
+//   ) {
+//     super(ten, moTaTuong, kyNang);
+//     this.donSatThu = donSatThu;
+//   }
+//   showThongTinSatThu() {
+//     return `Đây là thông tin của class Sát Thủ: ${super.showThongTin()} và đòn sát thủ của tướng là ${
+//       this.donSatThu
+//     }`;
+//   }
+// }
+// var ashe = new Tuong("Ashe", "Cung Băng", [
+//   "Chú Tâm Tiễn",
+//   "Tán Xạ Tiễn",
+//   "Ưng Tiễn",
+//   "Đại Băng Tiễn",
+// ]);
+// console.log(ashe.showThongTin());
+// var ahri = new SatThu(
+//   "Ahri",
+//   "Hồ Ly Chín Đuôi",
+//   ["Hút hồn", "Quả cầu ma thuật", "Lửa Hồ Ly", "Hôn gió"],
+//   "Khiêu khích"
+// );
+// console.log(ahri.showThongTinSatThu());
+//Cách dùng acess modifier (Public,Private,Protected)
+// class KhoaHoc {
+//   public id: number;
+//   private ten: string;
+//   public doDai: number;
+//   constructor(id: number, ten: string, doDai: number) {
+//     this.id = id;
+//     this.ten = ten;
+//     this.doDai = doDai;
+//   }
+//   xemKhoaHoc() {
+//     console.log(`
+//       ID khóa học là: ${this.id}
+//       Tên khóa học là: ${this.ten}
+//       Độ dài khóa học là: ${this.doDai}
+//     `);
+//   }
+//   testPrivate() {
+//     console.log(this.ten);
+//   }
+// }
+// class KhoaLapTrinh extends KhoaHoc {
+//   public fileDinhKem: string;
+//   constructor(id: number, ten: string, doDai: number, fileDinhKem: string) {
+//     super(id, ten, doDai);
+//     this.fileDinhKem = fileDinhKem;
+//   }
+//   xemKhoaHocLapTrinh() {
+//     super.xemKhoaHoc();
+//     console.log(`File đính kèm là: ${this.fileDinhKem}`);
+//   }
+//   // testPublic() {
+//   //   console.log(this.ten);
+//   // }
+// }
+// var khoa08 = new KhoaHoc(8, "Typescript", 6);
+// var khoa09 = new KhoaLapTrinh(9, "Javascript", 13, "a.zip");
+// // console.log(khoa08.ten);
+// khoa08.testPrivate();
+// // console.log(khoa09.ten);
+// // khoa09.testPublic();
+// /**
+//  * Public có thể truy nhập từ mọi nơi
+//  * Private chỉ có thể truy cập ở bên trong class
+//  * Protected thì có thể truy cập từ class đó và các class con của class đó
+//  */
+// Cách dùng Accessor
+var Hero = /** @class */ (function () {
+    function Hero(_ten) {
+        this._ten = _ten;
     }
-    //Method
-    NhanVatGame.prototype.hienthiten = function () {
-        //this ở đây là đối tượng gọi đến method này
-        return "T\u00EAn nh\u00E2n v\u1EADt l\u00E0: " + this.tenNhanVat;
-    };
-    return NhanVatGame;
+    Object.defineProperty(Hero.prototype, "ten", {
+        get: function () {
+            return this._ten;
+        },
+        enumerable: false,
+        configurable: true
+    });
+    return Hero;
 }());
-//Từ khóa new để gọi hàm constructor khởi tạo đối tượng
-var garen = new NhanVatGame("Garen", "Đồ tể", 700);
-var Dienthoai = /** @class */ (function () {
-    function Dienthoai(ten, gia, sao, mauSac) {
-        this.ten = ten;
-        this.gia = gia;
-        this.sao = sao;
-        this.mauSac = mauSac;
-    }
-    Dienthoai.prototype.showNoiDung = function () {
-        return "S\u1EA3n ph\u1EA9m n\u00E0y c\u00F3 t\u00EAn l\u00E0 " + this.ten + " c\u00F3 gi\u00E1 l\u00E0 " + this.gia + " c\u00F3 s\u1ED1 sao \u0111\u00E1nh gi\u00E1 l\u00E0 " + this.sao + " v\u00E0 c\u00F3 " + this.mauSac.length + " m\u00E0u";
-    };
-    return Dienthoai;
-}());
-var sp1 = new Dienthoai("Iphone", 10000000, 5, ["Đen", "Đỏ", "Vàng"]);
-var sp2 = new Dienthoai("Samsung", 20000, 4, ["Xanh", "Cam", "Bạc"]);
-console.log(sp1.showNoiDung());
-console.log(sp2.showNoiDung());
-//Cách dùng kiểu enum
-var state;
-(function (state) {
-    state[state["Creat"] = 10] = "Creat";
-    state[state["Processing"] = 11] = "Processing";
-    state[state["Finish"] = 12] = "Finish";
-})(state || (state = {}));
-var Congviec = /** @class */ (function () {
-    function Congviec(id, ten, trangthai) {
-        this.id = id;
-        this.ten = ten;
-        this.trangthai = trangthai;
-    }
-    return Congviec;
-}());
-var cv1 = new Congviec(1, "Coder", state.Processing);
-console.log(cv1);
+var zeus = new Hero("zeus");
+console.log(zeus.ten);
