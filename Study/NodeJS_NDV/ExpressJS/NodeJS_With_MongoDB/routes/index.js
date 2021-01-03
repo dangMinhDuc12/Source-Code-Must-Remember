@@ -25,7 +25,7 @@ const insertDocuments = function(db, callback,duLieuThemVao) {
   });
 };
 
-//Tạo hàm tìm dữ liệu
+//Tạo hàm tìm tất cả dữ liệu
 const findDocuments = function(db, callback) {
   // Get the documents collection
   const collection = db.collection('user');
@@ -42,6 +42,33 @@ const removeDocument = function(db, callback,id) {
   // Delete document where a is 3
   collection.deleteOne({_id: id}, function(err, result) {
   
+    callback(result);
+  });
+}
+
+//Tạo hàm tìm một dữ liệu
+const findDocument = function(db, callback,idUpdate) {
+  // Get the documents collection
+  const collection = db.collection('user');
+  // Find some documents
+  collection.find(idUpdate).toArray(function(err, docs) {
+    
+    console.log("Found the following records");
+    console.log(docs);
+    callback(docs);
+  });
+}
+
+// Tạo hàm sửa dữ liệu
+const updateDocument = function(db, callback,idUpdate,duLieuSua) {
+  // Get the documents collection
+  const collection = db.collection('user');
+  // Update document where a is 2, set b equal to 1
+  collection.updateOne({ _id: idUpdate}
+    , { $set: duLieuSua }, function(err, result) {
+   
+    
+    console.log("Đã sửa thành công");
     callback(result);
   });
 }
@@ -127,5 +154,59 @@ router.get('/xoa/:id', function(req, res, next) {
 
   res.redirect('/xem');
 });
+
+
+/* Sửa dữ liệu */
+router.get('/sua/:idUpdate', function(req, res, next) {
+  var idUpdate = convertObjectID(req.params.idUpdate);
+
+  MongoClient.connect(url,{ useUnifiedTopology: true, useNewUrlParser: true }, function(err, client) {
+    
+    console.log("Tìm dữ liệu cần update thành công");
+  
+    const db = client.db(dbName);
+  
+    findDocument(db, function(docs) {
+       docs.forEach(function(value) {
+        res.render('sua', { 
+          title: 'Trang sửa dữ liệu',
+          up: value
+        });
+       })
+      client.close();
+    }, idUpdate);
+  });
+
+  
+ 
+});
+
+router.post('/sua/:idUpdate', function(req, res, next) {
+  var idUpdate = convertObjectID(req.params.idUpdate);
+  var tenSua = req.body.ten;
+  var dtSua = req.body.dt;
+  var duLieuSua = {
+    ten: tenSua,
+    dienthoai: dtSua
+  }
+  
+  //Gọi hàm insert để thêm dữ liệu
+  MongoClient.connect(url,{ useUnifiedTopology: true, useNewUrlParser: true }, function(err, client) {
+    
+    console.log("Thêm dữ liệu thành công");
+  
+    const db = client.db(dbName);
+    
+    updateDocument(db, function() {
+      client.close();
+    },idUpdate,duLieuSua);
+    
+  });
+
+  res.redirect('/xem');
+});
+
+
+
 
 module.exports = router;

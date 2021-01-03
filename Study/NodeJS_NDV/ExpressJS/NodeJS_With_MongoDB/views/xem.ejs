@@ -1,19 +1,6 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    
-    <title><%= title  %></title>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<%include ./layouts/header  %>
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-   
-  </head>
-  <body>
-      
+
     <div class="container">
       <div class="jumbotron text-center">
         <h1 class="display-3">Xem dữ liệu</h1>
@@ -42,7 +29,7 @@
                 <tr>
                   <td scope="row"><%=data.ten  %></td>
                   <td><%= data.dienthoai  %></td>
-                  <td><a class="btn btn-primary">Sửa</a>   /   <a class="btn btn-danger"  href = "/xoa/<%=data._id %>" onclick="return cfDelete('Bạn có muốn xóa hay không')">Xóa</a></td>
+                  <td><a class="btn btn-primary" href="/sua/<%=data._id  %>">Sửa</a>   /   <a class="btn btn-danger"  href = "/xoa/<%=data._id %>" onclick="return cfDelete('Bạn có muốn xóa hay không')">Xóa</a></td>
                 </tr>
 
                 <%

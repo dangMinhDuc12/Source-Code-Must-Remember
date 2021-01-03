@@ -1,7 +1,9 @@
 <%include ./layouts/header  %>
+
+
     <div class="container">
       <div class="jumbotron text-center">
-        <h1 class="display-3">Thêm mới dữ liệu</h1>
+        <h1 class="display-3">Sửa dữ liệu</h1>
         <p class="lead">vào MongoDB</p>
         <hr class="my-2">
        
@@ -9,16 +11,16 @@
     
 
 
-    <form action="/them" method="POST">
+    <form action="/sua/<%=up._id  %>" method="POST">
       <div class="form-group">
-        <label for="ten">Tên</label>
+        <label for="ten">Sửa lại tên</label>
         <input type="text"
-          class="form-control" name="ten" id="ten" aria-describedby="helpId" placeholder="">
+          class="form-control" name="ten" id="ten" aria-describedby="helpId" placeholder="" value="<%= up.ten  %>">
         <small id="helpId" class="form-text text-muted">Help text</small>
       </div>
       <div class="form-group">
-        <label for="dt">Điện thoại</label>
-        <input type="text" class="form-control" name="dt" id="dt" aria-describedby="helpId" placeholder="">
+        <label for="dt">Sửa lại điện thoại</label>
+        <input type="text" class="form-control" name="dt" id="dt" aria-describedby="helpId" placeholder="" value= "<%=up.dienthoai  %>">
         <small id="helpId" class="form-text text-muted">Help text</small>
       </div>
 
