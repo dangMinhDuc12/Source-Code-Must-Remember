@@ -3,12 +3,12 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+const db = require('./connect_db.js')
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
-const mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/mongooseDemo', {useNewUrlParser: true, useUnifiedTopology: true});
+
 
 
 var methodOverride = require('method-override')
@@ -48,4 +48,7 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
+
+//Kết nối db
+db.connectDB();
 module.exports = app;
