@@ -28,5 +28,14 @@ router.get('/contact.html', function(req, res, next) {
   res.render('clean_blog/contact');
 });
 
+router.get('/ajax', function(req, res, next) {
+  // * là tất cả domain 
+  res.header('Access-Control-Allow-Origin','*');
+  res.header('Access-Control-Allow-Headers','Content-Type');
+  res.json({name: 'Duc', age: 23, address: 'Hà Nội'})
+});
+
+
+
 
 module.exports = router;

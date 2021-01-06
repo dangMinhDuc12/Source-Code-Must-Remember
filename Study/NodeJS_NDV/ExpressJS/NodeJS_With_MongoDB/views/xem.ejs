@@ -29,7 +29,7 @@
                 <tr>
                   <td scope="row"><%=data.ten  %></td>
                   <td><%= data.dienthoai  %></td>
-                  <td><a class="btn btn-primary" href="/sua/<%=data._id  %>">Sửa</a>   /   <a class="btn btn-danger"  href = "/xoa/<%=data._id %>" onclick="return cfDelete('Bạn có muốn xóa hay không')">Xóa</a></td>
+                  <td><a class="btn btn-primary" href="/sua/<%=data._id  %>">Sửa</a>   /   <a class="btn btn-danger"  href = "/xoa/<%=data._id %>" onclick="return confirm('Bạn có muốn xóa hay không')">Xóa</a></td>
                 </tr>
 
                 <%
