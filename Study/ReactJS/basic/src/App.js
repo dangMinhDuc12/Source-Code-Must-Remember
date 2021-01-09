@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import './App.css'
 // import Header from './components/Header.js'
 // import Product from './components/Product.js'
-import ProductProps from './components/Product_props.js'
+// import ProductProps from './components/Product_props.js'
 
 /**
  *        
@@ -12,7 +12,7 @@ import ProductProps from './components/Product_props.js'
  * Class Component gọi các tham số hay hàm phải có this, còn function component sẽ truyền vào tham số của function component đó
  * Nếu trả về 1 mảng các JSX thì thẻ bao bọc lấy nó phải có attribute key là duy nhất, có thể truyền index lúc lặp hoặc truyền ID của object lúc khai báo
  * Truyền props từ class cha vào class con rồi lấy bên class con bằng this.props.<tên props truyền vào>, không đặt tên props là children, vì children là lấy nội dung bên trong component đó
- * Bắt buộc dùng arrow function khi bắt sự kiện(Cách 1) (e) => {
+ * Bắt buộc dùng arrow function khi bắt sự kiện, khi bắt sự kiện truyền vào trong {} là 1 function (Cách 1) (e) => {
                                     e.preventDefault();
                                     this.addToCart(this.props.name)
                                 }
@@ -29,10 +29,34 @@ this.input.current.value
 
 
 export default class App extends Component {
-    // constructor(props) {
-    //     super(props);
-    //     this.input = React.createRef();
-    // }
+    constructor(props) {
+        super(props);
+        // this.input = React.createRef();
+
+        this.state = {
+            product: [
+                {
+                    name: 'Iphone 12 mới nhất',
+                    price: 20000000,
+                    img: 'https://www.xtmobile.vn/vnt_upload/product/Hinh_DT/Iphone/thumbs/(600x600)_crop_iphone-12-mini-64gb-xtmobile.jpg',
+                    status: true,
+                },
+                {
+                    name: 'Samsung S20',
+                    price: 30000000,
+                    img: 'https://cdn.tgdd.vn/Products/Images/42/217935/samsung-galaxy-s20-hong-600x600-600x600.jpg',
+                    status: true,
+                },
+                {
+                    name: 'Realme 7',
+                    price: 40000000,
+                    img: 'https://cdn.cellphones.com.vn/media/catalog/product/cache/7/thumbnail/9df78eab33525d08d6e5fb8d27136e95/r/e/realme-7i-xanh-duong_1.jpg',
+                    status: true,
+                },
+            ],
+            isActive: true
+        };
+    }
     // showInfo(person) {
     //     if(person.status) {
     //         return (
@@ -44,14 +68,21 @@ export default class App extends Component {
     //         ) 
     //     }
     // }
-    testOnClick() {
-        console.log('Hello world');
+    // testOnClick() {
+    //     console.log('Hello world');
+    // }
+
+    // addProduct = () => {
+    //     // console.log(this.input.current.value);
+    //     console.log(this.refs.name.value);
+    // }
+
+    testSetState = () => {
+        this.setState({
+            isActive: !this.state.isActive
+        })
     }
 
-    addProduct = () => {
-        // console.log(this.input.current.value);
-        console.log(this.refs.name.value);
-    }
 
   render() {
     //Khai báo biến
@@ -94,42 +125,63 @@ export default class App extends Component {
     //     )
     // })
 
-    var phones = [
-        {
-            name: 'Iphone 12 mới nhất',
-            price: 20000000,
-            img: 'https://www.xtmobile.vn/vnt_upload/product/Hinh_DT/Iphone/thumbs/(600x600)_crop_iphone-12-mini-64gb-xtmobile.jpg',
-            status: true,
-        },
-        {
-            name: 'Samsung S20',
-            price: 30000000,
-            img: 'https://cdn.tgdd.vn/Products/Images/42/217935/samsung-galaxy-s20-hong-600x600-600x600.jpg',
-            status: true,
-        },
-        {
-            name: 'Realme 7',
-            price: 40000000,
-            img: 'https://cdn.cellphones.com.vn/media/catalog/product/cache/7/thumbnail/9df78eab33525d08d6e5fb8d27136e95/r/e/realme-7i-xanh-duong_1.jpg',
-            status: true,
-        },
-    ];
+    // var phones = [            
+    //     {
+    //         name: 'Iphone 12 mới nhất',
+    //         price: 20000000,
+    //         img: 'https://www.xtmobile.vn/vnt_upload/product/Hinh_DT/Iphone/thumbs/(600x600)_crop_iphone-12-mini-64gb-xtmobile.jpg',
+    //         status: true,
+    //     },
+    //     {
+    //         name: 'Samsung S20',
+    //         price: 30000000,
+    //         img: 'https://cdn.tgdd.vn/Products/Images/42/217935/samsung-galaxy-s20-hong-600x600-600x600.jpg',
+    //         status: true,
+    //     },
+    //     {
+    //         name: 'Realme 7',
+    //         price: 40000000,
+    //         img: 'https://cdn.cellphones.com.vn/media/catalog/product/cache/7/thumbnail/9df78eab33525d08d6e5fb8d27136e95/r/e/realme-7i-xanh-duong_1.jpg',
+    //         status: true,
+    //     },
+    // ];
 
-    var phonesArray = phones.map((phone, index) => {
+    // var phonesArray = phones.map((phone, index) => {
+    //     let result;
+    //     if(phone.status) {
+            
+    //         result =   <ProductProps
+    //                         key = {index}
+    //                         name = {phone.name}
+    //                         price = {phone.price}
+    //                         img = {phone.img}
+    //                     />
+            
+    //     }
+    //     return result;
+    
+    // })
+
+    let phonesStateArray = this.state.product.map((phone, index) => {
         let result;
         if(phone.status) {
             
-            result =   <ProductProps
-                            key = {index}
-                            name = {phone.name}
-                            price = {phone.price}
-                            img = {phone.img}
-                        />
-            
+            result = (
+                    <tr key = { index }>
+                        <td>{ index + 1 }</td>
+                        <td>{ phone.name }</td>
+                        <td><span className="label label-success">{ phone.price } VNĐ</span></td>
+                    </tr>
+            );
         }
         return result;
-    
     })
+                        
+                
+                    
+
+        
+            
 
 
     return (
@@ -187,12 +239,9 @@ export default class App extends Component {
         </nav>
 
         
-        <div className="container">
-            
+        {/* <div className="container">
             <div className="row">
-                
                 <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                    
                     <div className="panel panel-danger">
                         <div className="panel-heading">
                                 <h3 className="panel-title">Thêm sản phẩm</h3>
@@ -207,32 +256,64 @@ export default class App extends Component {
                             </button>
                         </div>
                     </div>
-                    
-                    
-                    
                 </div>
-                
-                
                 <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                     { phonesArray }
-                    
                 </div>
-                
                 <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                    
                     <button type="button" className="btn btn-warning" onClick = { this.testOnClick }>
                         Click me
                     </button>
+                </div>
+            </div>
+        </div> */}
+
+
+        {/* State */}
+
+
+        <div className="container">
+            <div className="row">
+                <div className = "row">
+                    
+                    <table className="table table-bordered table-hover">
+                        <thead>
+                            <tr>
+                                <th>STT</th>
+                                <th>Tên sản phẩm</th>
+                                <th>Giá</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {phonesStateArray}
+                        </tbody>
+                    </table>
+                    
+                    <button type="button" className="btn btn-warning" onClick = { this.testSetState }>
+                        Active : { this.state.isActive  ? 'true' : 'false'}
+                    </button>
                     
                 </div>
-                
-                
             </div>
-            
         </div>
-        
-        
     </div>    
+                    
+            
+        
+        
+                
+                    
+                
+                    
+                
+                    
+            
+                
+                    
+                    
+                    
+                
+                
         
         
     
