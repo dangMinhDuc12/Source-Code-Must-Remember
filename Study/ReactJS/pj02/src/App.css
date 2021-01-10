@@ -36,3 +36,20 @@
     transform: rotate(360deg);
   }
 }
+
+.mt-15 {
+    margin-top: 15px;
+}
+
+.form-add {
+    display: flex;
+    justify-content: space-between;
+}
+
+.form-add__exit {
+    cursor: pointer;
+}
+
+.form-add__exit:hover {
+    color: red;
+}
