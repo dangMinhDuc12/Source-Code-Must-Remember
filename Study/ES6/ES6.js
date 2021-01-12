@@ -265,3 +265,5 @@ console.log(tuong.chieuCuoi);
 var satThu = new SatThu("Talon", "Nhát chém", 200, "Khiêu khích");
 satThu.chieuCuoi = "Chém gió";
 console.log(satThu.chieuCuoi);
+
+
