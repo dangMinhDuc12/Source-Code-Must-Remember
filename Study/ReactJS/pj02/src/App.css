@@ -53,3 +53,7 @@
 .form-add__exit:hover {
     color: red;
 }
+
+.ml-5 {
+    margin-left: 5px;
+}
