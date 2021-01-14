@@ -57,3 +57,9 @@
 .ml-5 {
     margin-left: 5px;
 }
+
+.sort_selected::after {
+    content: '\f00c';
+    font-family: FontAwesome;
+    margin: 0 0 0 10px;
+}

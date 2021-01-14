@@ -4,9 +4,37 @@ export default class TaskForm extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            id: '',
             name: '',
             status: false
         };
+    }
+
+    UNSAFE_componentWillMount() {
+        if(this.props.taskEditing) {
+            this.setState({
+                id: this.props.taskEditing.id,
+                name: this.props.taskEditing.name,
+                status: this.props.taskEditing.status
+            })
+        }
+    }
+
+    //lọt vào khi có sự thay đổi props
+    UNSAFE_componentWillReceiveProps(nextProps) {
+        if(nextProps && nextProps.taskEditing) {
+            this.setState({
+                id: nextProps.taskEditing.id,
+                name: nextProps.taskEditing.name,
+                status: nextProps.taskEditing.status
+            });
+        }else if(!nextProps.taskEditing) {
+            this.setState({
+                id: '',
+                name: '',
+                status: false
+            })
+        }
     }
 
     change = (e) => {
@@ -36,11 +64,12 @@ export default class TaskForm extends Component {
 
 
     render() {
+        let {id} = this.state;
         return (
             <div className="panel panel-warning">
             <div className="panel-heading">
                 <h3 className="panel-title form-add">
-                    Thêm Công Việc
+                    {id ? 'Cập nhật công việc' : 'Thêm công việc'}
                     <span 
                     className="fa fa-times-circle form-add__exit"
                     onClick = {() => this.props.closeForm()}

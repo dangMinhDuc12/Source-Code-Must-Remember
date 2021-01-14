@@ -9,7 +9,17 @@ export default class App extends Component {
         super(props);
         this.state = {
             tasks: [],
-            isDisplayForm: false
+            isDisplayForm: false,
+            taskEditing: null,
+            filter: {
+                name: '',
+                status: -1
+            },
+            keyword: '',
+            sort: {
+                by: 'name', //Sắp xếp theo tên
+                value: 1 //Sắp xếp tăng dần
+            }
         };
     }
 
@@ -27,9 +37,18 @@ export default class App extends Component {
 
     //Handle form
     toggleForm = () => {
-        this.setState({
-            isDisplayForm: !this.state.isDisplayForm
-        })
+        if(this.state.isDisplayForm && this.state.taskEditing) {
+            this.setState({
+                isDisplayForm: true,
+                taskEditing: null
+            })
+        }else {
+            this.setState({
+                isDisplayForm: !this.state.isDisplayForm,
+                taskEditing: null
+            })
+        }
+        
     }
     closeForm = () => {
         this.setState({
@@ -37,12 +56,25 @@ export default class App extends Component {
         })
     }
 
+    showForm = () => {
+        this.setState({
+            isDisplayForm: true
+        })
+    }
+
     submit = (data) => {
         let {tasks} = this.state;
-        data.id = this.generateID();
-        tasks.push(data);
+        if(!data.id) {
+            data.id = this.generateID();
+            tasks.push(data);
+        }else {
+            let index = this.findIndex(data.id);
+            tasks[index] = data
+        }
+    
         this.setState({
-            tasks: tasks
+            tasks: tasks,
+            taskEditing: null
         });
         localStorage.setItem('tasks', JSON.stringify(tasks))
     }
@@ -72,6 +104,68 @@ export default class App extends Component {
         return result;
         
     }
+
+    delete = (id) => {
+        let {tasks} = this.state;
+        let index = this.findIndex(id);
+        if(index !== -1) {
+            tasks.splice(index, 1);
+            this.setState({
+                tasks: tasks
+            });
+            localStorage.setItem('tasks', JSON.stringify(tasks));
+        }
+        this.closeForm();
+        
+
+    }
+
+    update = (id) => {
+        let {tasks} = this.state;
+        let index = this.findIndex(id);
+        this.setState({
+            taskEditing: tasks[index]
+        })
+        this.showForm();
+        
+        
+    }
+
+    //Filter 
+    filter = (filterName, filterStatus) => {
+        this.setState({
+            filter: {
+                name: filterName.toLowerCase(),
+                status: filterStatus
+            }
+        })
+    }
+
+    //Search
+    search = (keyword) => {
+        this.setState({
+            keyword: keyword.toLowerCase()
+        })
+
+    }
+
+    //Sort
+    sort = async (sort) => {
+        await Promise.resolve( this.setState({
+            sort: {
+                by: sort.by, 
+                value: sort.value
+            }
+        }));
+        
+        
+    }
+
+
+
+    // componentDidUpdate() {
+    //     console.log(this.state.taskEditing);
+    // }
 
 
     
@@ -108,9 +202,53 @@ export default class App extends Component {
     }
 
     render() {
-        let {tasks, isDisplayForm} = this.state;
+        let {tasks, isDisplayForm, taskEditing , filter, keyword, sort} = this.state;
+        if(filter) {
+            if(filter.name) {
+                tasks = tasks.filter(task => {
+                    return task.name.toLowerCase().includes(filter.name) 
+                })
+            }
+            tasks = tasks.filter(task => {
+                if(filter.status === -1) {
+                    return task
+                }else {
+                    return task.status === (filter.status === 1 ? true: false)
+                }
+            })
+        }
+        if(keyword) {
+            tasks = tasks.filter(task => {
+                return task.name.toLowerCase().includes(keyword) 
+            })
+        }
+        //a và b là từng phần tử của mảng, return về số lớn hơn không thì sẽ là sắp xếp giảm dần để số to lên trước, trả về nhỏ hơn không sẽ là tăng dần để số nhỏ lên trước
+        if(sort.by === 'name') {
+            tasks.sort((a, b) => {
+                if(a.name > b.name) {
+                    return sort.value
+                }else if(a.name < b.name) {
+                    return sort.value
+                }
+                else {
+                    return 0
+                }
+            })
+        }else {
+            tasks.sort((a, b) => {
+                if(a.status > b.status) {
+                    return -sort.value
+                }else if(a.status < b.status) {
+                    return sort.value
+                }
+                else {
+                    return 0
+                }
+            })
+        }
+
         let elmTaskForm = isDisplayForm 
-            ? <TaskForm  closeForm = {this.closeForm} submit = {this.submit}/> 
+            ? <TaskForm  closeForm = {this.closeForm} submit = {this.submit} taskEditing = {taskEditing}/> 
             : ''
         return (
                 <div className="container">
@@ -138,13 +276,20 @@ export default class App extends Component {
                                 Tạo dữ liệu mẫu
                             </button> */}
                             
-                                <Control />
+                                <Control 
+                                search = {this.search}
+                                sort = {this.sort}
+                            
+                                />
                             
                             <div className="row mt-15">
                                 <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                                 <TaskList 
                                 tasks = {tasks}
                                 updateStatus = {this.updateStatus}
+                                delete = {this.delete}
+                                update = {this.update}
+                                filter = {this.filter}
                                 />
                                 </div>
                             </div>

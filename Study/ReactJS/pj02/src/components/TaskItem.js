@@ -13,6 +13,8 @@ export default class TaskItem extends Component {
         }
     }
 
+    
+
     render() {
         let {task, index} = this.props;
         return (
@@ -25,11 +27,11 @@ export default class TaskItem extends Component {
                     </span>
                 </td>
                 <td className="text-center">
-                    <button type="button" className="btn btn-warning">
+                    <button type="button" className="btn btn-warning" onClick={() => this.props.update(task.id)}>
                         <span className="fa fa-pencil mr-5"></span> Sửa
                     </button>
                     &nbsp;
-                    <button type="button" className="btn btn-danger">
+                    <button type="button" className="btn btn-danger" onClick = {() => this.props.delete(task.id)}>
                         <span className="fa fa-trash mr-5"></span> Xóa
                     </button>
                 </td>
