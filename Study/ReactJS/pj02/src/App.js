@@ -228,7 +228,7 @@ export default class App extends Component {
                 if(a.name > b.name) {
                     return sort.value
                 }else if(a.name < b.name) {
-                    return sort.value
+                    return -sort.value
                 }
                 else {
                     return 0
