@@ -55,7 +55,7 @@
             const file = document.getElementById('photo').files[0];
             console.log(file);
 
-            //Tao name khi upload len firebase
+            // //Tao name khi upload len firebase
             const name = new Date() + '-' + file.name;
 
             //config kieu du lieu uplen firebase
@@ -63,10 +63,8 @@
                 contentType: file.type
             }
 
-            //upload len firebase
-            const task = ref.child(name).put(file, metadata);
-
-            task
+            // //upload len firebase
+            ref.child(`images/${name}`).put(file, metadata)
                 .then(snapshot => snapshot.ref.getDownloadURL())
                 .then(url => {
                     console.log(url);
@@ -75,10 +73,12 @@
                 })
         }
 
+            //Download anh tu firebase
         function downloadImage() {
             const ref = firebase.storage().ref();
-            ref.child('Fri Jan 15 2021 23:22:54 GMT+0700 (Indochina Time)-Background.jpg').getDownloadURL().then(url => {
-                document.getElementById('image').src = url;
+            ref.child(`images/Sat Jan 16 2021 09:37:25 GMT+0700 (Indochina Time)-Background.jpg`).getDownloadURL()
+                .then(url => {
+                    document.getElementById('image').src = url;
             })
         }
 
