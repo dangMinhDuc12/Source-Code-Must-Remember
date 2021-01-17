@@ -1,6 +1,8 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import {connect} from 'react-redux';
+import * as actions from '../actions/index';
 
-export default class TaskForm extends Component {
+class TaskForm extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -47,7 +49,7 @@ export default class TaskForm extends Component {
 
     submit = (e) => {
         e.preventDefault();
-        this.props.submit(this.state);
+        this.props.addTask(this.state)
 
         //Hủy bỏ lưu form
         this.clearForm();
@@ -72,7 +74,7 @@ export default class TaskForm extends Component {
                     {id ? 'Cập nhật công việc' : 'Thêm công việc'}
                     <span 
                     className="fa fa-times-circle form-add__exit"
-                    onClick = {() => this.props.closeForm()}
+                    onClick = {this.props.closeForm}
                     
                     ></span>
                 </h3>
@@ -118,3 +120,24 @@ export default class TaskForm extends Component {
         )
     }
 }
+
+
+const mapStateToProps = (state) => {
+    return {
+
+    }
+};
+
+const mapDispatchToProps = (dispatch, props) => {
+    return {
+        addTask: (task) => {
+            dispatch(actions.addTask(task));
+        },
+        closeForm: () => {
+            dispatch(actions.closeForm());
+        }
+    }
+
+}
+
+export default connect(mapStateToProps, mapDispatchToProps) (TaskForm);

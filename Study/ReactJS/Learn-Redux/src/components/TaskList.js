@@ -46,7 +46,6 @@ class TaskList extends Component {
                     key = {task.id}
                     index = {index}
                     task = {task}
-                    updateStatus = {this.props.updateStatus}
                     delete = {this.props.delete}
                     update = {this.props.update}
 
@@ -98,7 +97,7 @@ class TaskList extends Component {
 }
 
 
-// Dùng connect kết nối đến reducer và lấy về state của reducer chuyển thành props
+// Dùng connect kết nối đến store và lấy về state của reducer chuyển thành props
 
 const mapStateToProps = (state) => {
     return {

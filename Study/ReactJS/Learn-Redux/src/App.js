@@ -4,13 +4,13 @@ import TaskForm from './components/TaskForm.js';
 import Control from './components/Control.js';
 import TaskList from './components/TaskList.js';
 import './trainning/demo.js';
+import {connect} from 'react-redux';
+import * as actions from './actions/index';
 
-export default class App extends Component {
+class App extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            tasks: [],
-            isDisplayForm: false,
             taskEditing: null,
             filter: {
                 name: '',
@@ -25,37 +25,14 @@ export default class App extends Component {
     }
 
 
-    //Dùng lifecycle để lưu biến tasks, lifecycle dưới được dùng khi components chuẩn bị được render ra trình duyệt, khi f5 dữ liệu sẽ không mất
-    UNSAFE_componentWillMount() {
-        if(localStorage && localStorage.getItem('tasks')) {
-            let tasks = JSON.parse(localStorage.getItem('tasks'));
-            this.setState({
-                tasks: tasks
-            })
-        }
-        
-    }
+
 
     //Handle form
     toggleForm = () => {
-        if(this.state.isDisplayForm && this.state.taskEditing) {
-            this.setState({
-                isDisplayForm: true,
-                taskEditing: null
-            })
-        }else {
-            this.setState({
-                isDisplayForm: !this.state.isDisplayForm,
-                taskEditing: null
-            })
-        }
+        this.props.toggleForm();
         
     }
-    closeForm = () => {
-        this.setState({
-            isDisplayForm: false
-        })
-    }
+
 
     showForm = () => {
         this.setState({
@@ -63,34 +40,9 @@ export default class App extends Component {
         })
     }
 
-    submit = (data) => {
-        let {tasks} = this.state;
-        if(!data.id) {
-            data.id = this.generateID();
-            tasks.push(data);
-        }else {
-            let index = this.findIndex(data.id);
-            tasks[index] = data
-        }
-    
-        this.setState({
-            tasks: tasks,
-            taskEditing: null
-        });
-        localStorage.setItem('tasks', JSON.stringify(tasks))
-    }
 
-    updateStatus = (id) => {
-        let {tasks} = this.state;
-        let index = this.findIndex(id);
-        if(index !== -1) {
-            tasks[index].status = !tasks[index].status;
-            this.setState({
-                tasks: tasks
-            });
-            localStorage.setItem('tasks', JSON.stringify(tasks));
-        }
-    }
+
+  
 
     findIndex = (id) => {
         let {tasks} = this.state;
@@ -162,94 +114,66 @@ export default class App extends Component {
         
     }
 
-
-
-    // componentDidUpdate() {
-    //     console.log(this.state.taskEditing);
-    // }
-
-
     
 
-    //Tạo data mẫu
-    // generateData = () => {
-    //     let tasks = [
-    //         {
-    //             id: this.generateID(),
-    //             name: 'Học lập trình ReactJS',
-    //             status: true
-    //         },
-    //         {
-    //             id: this.generateID(),
-    //             name: 'Học lập trình NodeJS',
-    //             status: false
-    //         },
-    //         {
-    //             id: this.generateID(),
-    //             name: 'Học lập trình VueJS',
-    //             status: true
-    //         },
-    //     ];
-    //     localStorage.setItem('tasks', JSON.stringify(tasks));
-    // }
 
-    //Tạo ID random
-    s4 = () => {
-        return Math.floor((1 + Math.random()) * 0x10000).toString(16).substring(1);
-    }
-
-    generateID = () => {
-        return this.s4() + this.s4() + '-' + this.s4() + '-' + this.s4() + '-' + this.s4() + '-' + this.s4() + this.s4() + this.s4();
-    }
 
     render() {
-        let {tasks, isDisplayForm, taskEditing , filter, keyword, sort} = this.state;
-        if(filter) {
-            if(filter.name) {
-                tasks = tasks.filter(task => {
-                    return task.name.toLowerCase().includes(filter.name) 
-                })
-            }
-            tasks = tasks.filter(task => {
-                if(filter.status === -1) {
-                    return task
-                }else {
-                    return task.status === (filter.status === 1 ? true: false)
-                }
-            })
-        }
-        if(keyword) {
-            tasks = tasks.filter(task => {
-                return task.name.toLowerCase().includes(keyword) 
-            })
-        }
-        //a và b là từng phần tử của mảng, return về số lớn hơn không thì sẽ là sắp xếp giảm dần để số to lên trước, trả về nhỏ hơn không sẽ là tăng dần để số nhỏ lên trước
-        if(sort.by === 'name') {
-            tasks.sort((a, b) => {
-                if(a.name > b.name) {
-                    return sort.value
-                }else if(a.name < b.name) {
-                    return -sort.value
-                }
-                else {
-                    return 0
-                }
-            })
-        }else {
-            tasks.sort((a, b) => {
-                if(a.status > b.status) {
-                    return -sort.value
-                }else if(a.status < b.status) {
-                    return sort.value
-                }
-                else {
-                    return 0
-                }
-            })
-        }
+        let {  taskEditing , filter, keyword, sort} = this.state;
+
+
+        let isDisplayForm = this.props.isDisplayForm;
+
+
+
+
+
+        // if(filter) {
+        //     if(filter.name) {
+        //         tasks = tasks.filter(task => {
+        //             return task.name.toLowerCase().includes(filter.name) 
+        //         })
+        //     }
+        //     // tasks = tasks.filter(task => {
+        //     //     if(filter.status === -1) {
+        //     //         return task
+        //     //     }else {
+        //     //         return task.status === (filter.status === 1 ? true: false)
+        //     //     }
+        //     // })
+        // }
+        // if(keyword) {
+        //     tasks = tasks.filter(task => {
+        //         return task.name.toLowerCase().includes(keyword) 
+        //     })
+        // }
+        // //a và b là từng phần tử của mảng, return về số lớn hơn không thì sẽ là sắp xếp giảm dần để số to lên trước, trả về nhỏ hơn không sẽ là tăng dần để số nhỏ lên trước
+        // if(sort.by === 'name') {
+        //     tasks.sort((a, b) => {
+        //         if(a.name > b.name) {
+        //             return sort.value
+        //         }else if(a.name < b.name) {
+        //             return -sort.value
+        //         }
+        //         else {
+        //             return 0
+        //         }
+        //     })
+        // }else {
+        //     tasks.sort((a, b) => {
+        //         if(a.status > b.status) {
+        //             return -sort.value
+        //         }else if(a.status < b.status) {
+        //             return sort.value
+        //         }
+        //         else {
+        //             return 0
+        //         }
+        //     })
+        // }
 
         let elmTaskForm = isDisplayForm 
-            ? <TaskForm  closeForm = {this.closeForm} submit = {this.submit} taskEditing = {taskEditing}/> 
+            ? <TaskForm   taskEditing = {taskEditing}/> 
             : ''
         return (
                 <div className="container">
@@ -287,7 +211,7 @@ export default class App extends Component {
                                 <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                                 <TaskList 
                             
-                                updateStatus = {this.updateStatus}
+                                
                                 delete = {this.delete}
                                 update = {this.update}
                                 filter = {this.filter}
@@ -302,3 +226,21 @@ export default class App extends Component {
 }
 
 
+const mapStateToProps = (state) => {
+    return {
+        isDisplayForm: state.displayForm
+    }
+};
+
+const mapDispatchToProps = (dispatch, props) => {
+    return {
+        toggleForm: () => {
+            dispatch(actions.toggleForm());
+        },
+    
+    };
+}
+
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);

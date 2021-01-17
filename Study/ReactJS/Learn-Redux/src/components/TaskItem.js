@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
-import './styles/TaskItem.css'
+import './styles/TaskItem.css';
+import {connect} from 'react-redux';
+import * as actions from '../actions/index';
 
-export default class TaskItem extends Component {
+class TaskItem extends Component {
 
 
     checkStatus = (status) => {
@@ -22,7 +24,7 @@ export default class TaskItem extends Component {
                 <td>{index + 1}</td>
                 <td>{task.name}</td>
                 <td className="text-center">
-                    <span className={this.checkStatus(task.status)} onClick = {() => this.props.updateStatus(task.id)}>
+                    <span className={this.checkStatus(task.status)} onClick = {() => this.props.updateStatusTask(task.id)}>
                         {task.status ? 'Kích hoạt' : 'Ẩn'}
                     </span>
                 </td>
@@ -39,3 +41,23 @@ export default class TaskItem extends Component {
         )
     }
 }
+
+
+const mapStateToProps = (state) => {
+    return {
+        
+    }
+};
+
+const mapDispatchToProps = (dispatch, props) => {
+    return {
+        updateStatusTask: (id) => {
+            dispatch(actions.updateStatusTask(id))
+        }
+
+    };
+}
+
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(TaskItem);
