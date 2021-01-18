@@ -33,7 +33,13 @@ class TaskItem extends Component {
                         <span className="fa fa-pencil mr-5"></span> Sửa
                     </button>
                     &nbsp;
-                    <button type="button" className="btn btn-danger" onClick = {() => this.props.delete(task.id)}>
+                    <button 
+                    type="button" 
+                    className="btn btn-danger" 
+                    onClick = {() => {
+                        this.props.onDeleteTask(task.id);
+                        this.props.onCloseForm();
+                        }}>
                         <span className="fa fa-trash mr-5"></span> Xóa
                     </button>
                 </td>
@@ -52,8 +58,15 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch, props) => {
     return {
         updateStatusTask: (id) => {
-            dispatch(actions.updateStatusTask(id))
+            dispatch(actions.updateStatusTask(id));
+        },
+        onDeleteTask: (id) => {
+            dispatch(actions.deleteTask(id));
+        },
+        onCloseForm: () => {
+            dispatch(actions.closeForm());
         }
+        
 
     };
 }

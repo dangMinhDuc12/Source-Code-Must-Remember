@@ -58,7 +58,16 @@ const tasksReducer = (state = initialState, action) => {
         
             return stateAfterUpdateStatus;
 
-            
+            case types.DELETE_TASK:
+                let stateAfterDeleteTask = [...state];
+                let indexToDelete = findIndex(stateAfterDeleteTask, action.id);
+                if(indexToDelete !== -1) {
+                    stateAfterDeleteTask.splice(indexToDelete, 1);
+                    localStorage.setItem('tasks', JSON.stringify(stateAfterDeleteTask));
+                    return stateAfterDeleteTask;
+                }
+                break;
+                
     
         default:
             return state;

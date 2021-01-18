@@ -58,20 +58,6 @@ class App extends Component {
         
     }
 
-    delete = (id) => {
-        let {tasks} = this.state;
-        let index = this.findIndex(id);
-        if(index !== -1) {
-            tasks.splice(index, 1);
-            this.setState({
-                tasks: tasks
-            });
-            localStorage.setItem('tasks', JSON.stringify(tasks));
-        }
-        this.closeForm();
-        
-
-    }
 
     update = (id) => {
         let {tasks} = this.state;
@@ -212,7 +198,7 @@ class App extends Component {
                                 <TaskList 
                             
                                 
-                                delete = {this.delete}
+                                
                                 update = {this.update}
                                 filter = {this.filter}
                                 />
