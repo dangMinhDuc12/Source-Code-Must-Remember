@@ -39,7 +39,7 @@ export default class TaskForm extends Component {
 
     change = (e) => {
         let name = e.target.name;
-        let value = e.target.type === 'select-one' ? !!e.target.value : e.target.value;
+        let value = e.target.value;
         this.setState({
             [name]: value
         })
@@ -94,7 +94,7 @@ export default class TaskForm extends Component {
                     <select 
                     className="form-control"
                     name = "status"
-                    value = {this.state.status}
+                    value = {this.state.status === "true" ? true : false}
                     onChange = {this.change}
                     
                     >
