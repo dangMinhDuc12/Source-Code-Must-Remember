@@ -34,25 +34,41 @@ const tasksReducer = (state = initialState, action) => {
         case types.LIST_ALL:
             return state;
 
-        case types.ADD_TASK:
-            let stateAfterAddTask = [...state];
-            let newTask = {
-                id: generateID(),
-                name: action.task.name,
-                status: action.task.status
+        case types.SAVE_TASK:
+            let stateAfterSaveTask = [...state];
+            if(!action.task.id) {
+                let newTask = {
+                    id: generateID(),
+                    name: action.task.name,
+                    status: action.task.status
+                }
+                stateAfterSaveTask.push(newTask);
+            }else {
+                let indexToUpdate = findIndex(stateAfterSaveTask, action.task.id);
+                stateAfterSaveTask[indexToUpdate] = action.task;
+                
             }
-            stateAfterAddTask.push(newTask);
-            localStorage.setItem('tasks', JSON.stringify(stateAfterAddTask));
-            return stateAfterAddTask;
+        
+            localStorage.setItem('tasks', JSON.stringify(stateAfterSaveTask));
+            return stateAfterSaveTask;
         
 
         case types.UPDATE_STATUS_TASK:
             let stateAfterUpdateStatus = [...state];
+            
     
             let index = findIndex(stateAfterUpdateStatus, action.id);
+
+            let checkStatus = () => {
+                if(stateAfterUpdateStatus[index].status === 'true') {
+                    return 'false';
+                }else {
+                    return 'true';
+                }
+            }
             stateAfterUpdateStatus[index] = {
                 ...stateAfterUpdateStatus[index],
-                status: !stateAfterUpdateStatus[index].status
+                status: checkStatus()
             }
             localStorage.setItem('tasks', JSON.stringify(stateAfterUpdateStatus));
         

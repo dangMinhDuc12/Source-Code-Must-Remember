@@ -8,7 +8,7 @@ class TaskForm extends Component {
         this.state = {
             id: '',
             name: '',
-            status: false
+            status: 'false'
         };
     }
 
@@ -34,14 +34,14 @@ class TaskForm extends Component {
             this.setState({
                 id: '',
                 name: '',
-                status: false
+                status: 'false'
             })
         }
     }
 
     change = (e) => {
         let name = e.target.name;
-        let value = e.target.type === 'select-one' ? !!e.target.value : e.target.value;
+        let value = e.target.value;
         this.setState({
             [name]: value
         })
@@ -49,7 +49,7 @@ class TaskForm extends Component {
 
     submit = (e) => {
         e.preventDefault();
-        this.props.addTask(this.state)
+        this.props.onSaveTask(this.state)
 
         //Hủy bỏ lưu form
         this.clearForm();
@@ -59,7 +59,7 @@ class TaskForm extends Component {
     clearForm = () => {
         this.setState({
             name: '',
-            status: false
+            status: 'false'
         })
         
     }
@@ -67,6 +67,7 @@ class TaskForm extends Component {
 
     render() {
         let {id} = this.state;
+        if(!this.props.isDisplayForm) return '';
         return (
             <div className="panel panel-warning">
             <div className="panel-heading">
@@ -100,12 +101,12 @@ class TaskForm extends Component {
                     onChange = {this.change}
                     
                     >
-                        <option value={true}>Kích Hoạt</option>
-                        <option value={false}>Ẩn</option>
+                        <option value="true">Kích Hoạt</option>
+                        <option value="false">Ẩn</option>
                     </select>
                 <br/>
                     <div className="text-center">
-                        <button type="submit" className="btn btn-warning">Thêm</button>&nbsp;
+                        <button type="submit" className="btn btn-warning">Lưu lại</button>&nbsp;
                         <button 
                             type="button" 
                             className="btn btn-danger"
@@ -124,18 +125,20 @@ class TaskForm extends Component {
 
 const mapStateToProps = (state) => {
     return {
-
+        isDisplayForm: state.displayForm,
+        taskEditing: state.taskEditing
     }
 };
 
 const mapDispatchToProps = (dispatch, props) => {
     return {
-        addTask: (task) => {
-            dispatch(actions.addTask(task));
+        onSaveTask: (task) => {
+            dispatch(actions.saveTask(task));
         },
         closeForm: () => {
             dispatch(actions.closeForm());
-        }
+        },
+    
     }
 
 }

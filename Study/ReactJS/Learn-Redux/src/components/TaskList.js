@@ -46,7 +46,6 @@ class TaskList extends Component {
                     key = {task.id}
                     index = {index}
                     task = {task}
-                    update = {this.props.update}
 
                     />
         })

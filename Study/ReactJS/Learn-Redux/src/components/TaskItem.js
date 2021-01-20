@@ -7,7 +7,7 @@ class TaskItem extends Component {
 
 
     checkStatus = (status) => {
-        if(status) {
+        if(status === 'true') {
             return 'label label-success cursor';
         }
         else {
@@ -25,11 +25,21 @@ class TaskItem extends Component {
                 <td>{task.name}</td>
                 <td className="text-center">
                     <span className={this.checkStatus(task.status)} onClick = {() => this.props.updateStatusTask(task.id)}>
-                        {task.status ? 'Kích hoạt' : 'Ẩn'}
+                        {task.status === 'true' ? 'Kích hoạt' : 'Ẩn'}
                     </span>
                 </td>
                 <td className="text-center">
-                    <button type="button" className="btn btn-warning" onClick={() => this.props.update(task.id)}>
+                    <button 
+                    type="button" 
+                    className="btn btn-warning" 
+                    onClick={() => 
+                    
+                    {
+                        this.props.onOpenForm()
+                        this.props.onEditTask(task)
+                    }
+                    }>
+
                         <span className="fa fa-pencil mr-5"></span> Sửa
                     </button>
                     &nbsp;
@@ -65,8 +75,14 @@ const mapDispatchToProps = (dispatch, props) => {
         },
         onCloseForm: () => {
             dispatch(actions.closeForm());
+        },
+        onOpenForm: () => {
+            dispatch(actions.openForm());
+        },
+        onEditTask: (task) => {
+            dispatch(actions.editTask(task))
         }
-        
+    
 
     };
 }

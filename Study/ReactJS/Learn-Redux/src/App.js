@@ -11,7 +11,7 @@ class App extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            taskEditing: null,
+            
             filter: {
                 name: '',
                 status: -1
@@ -29,7 +29,16 @@ class App extends Component {
 
     //Handle form
     toggleForm = () => {
-        this.props.toggleForm();
+        if(this.props.taskEditing && this.props.taskEditing.id) {
+            this.props.onClearTask({
+                id: '',
+                name: '',
+                status: 'false'
+            });
+        }else {
+            this.props.toggleForm();
+        }
+    
         
     }
 
@@ -59,16 +68,7 @@ class App extends Component {
     }
 
 
-    update = (id) => {
-        let {tasks} = this.state;
-        let index = this.findIndex(id);
-        this.setState({
-            taskEditing: tasks[index]
-        })
-        this.showForm();
-        
-        
-    }
+
 
     //Filter 
     filter = (filterName, filterStatus) => {
@@ -105,7 +105,7 @@ class App extends Component {
 
 
     render() {
-        let {  taskEditing , filter, keyword, sort} = this.state;
+        let {   filter, keyword, sort} = this.state;
 
 
         let isDisplayForm = this.props.isDisplayForm;
@@ -158,9 +158,7 @@ class App extends Component {
         //     })
         // }
 
-        let elmTaskForm = isDisplayForm 
-            ? <TaskForm   taskEditing = {taskEditing}/> 
-            : ''
+    
         return (
                 <div className="container">
                     <div className="text-center">
@@ -169,7 +167,7 @@ class App extends Component {
                     </div>
                     <div className="row">
                         <div className={isDisplayForm ? "col-xs-4 col-sm-4 col-md-4 col-lg-4" : ''}>
-                            {elmTaskForm}
+                            <TaskForm   /> 
                         </div>
                         <div className={isDisplayForm ? 'col-xs-8 col-sm-8 col-md-8 col-lg-8' : 'col-xs-12 col-sm-12 col-md-12 col-lg-12'}>
                             <button 
@@ -195,11 +193,7 @@ class App extends Component {
                             
                             <div className="row mt-15">
                                 <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                                <TaskList 
-                            
-                                
-                                
-                                update = {this.update}
+                                <TaskList
                                 filter = {this.filter}
                                 />
                                 </div>
@@ -214,7 +208,8 @@ class App extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        isDisplayForm: state.displayForm
+        isDisplayForm: state.displayForm,
+        taskEditing: state.taskEditing
     }
 };
 
@@ -223,6 +218,9 @@ const mapDispatchToProps = (dispatch, props) => {
         toggleForm: () => {
             dispatch(actions.toggleForm());
         },
+        onClearTask: (task) => {
+            dispatch(actions.editTask(task))
+        }
     
     };
 }
