@@ -9,10 +9,9 @@ export default class Control extends Component {
             
         <div className="row mt-15">  
             <Search 
-            search = {this.props.search}
             />
 
-            <Sort sort = {this.props.sort} />
+            <Sort  />
             
     </div> 
 

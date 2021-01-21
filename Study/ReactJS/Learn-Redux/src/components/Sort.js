@@ -1,29 +1,21 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import {connect} from 'react-redux';
+import * as actions from '../actions/index';
 
-export default class Sort extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            sort: {
-                by: 'name', 
-                value: 1
-            }
-        }
-    }
+
+class Sort extends Component {
     
-    click = async (by, value) => {
-        await Promise.resolve( this.setState({
-            sort: {
-                by,
-                value
-            }
-        }))
-        this.props.sort(this.state.sort);
+    click =  (by, value) => {
+
+        this.props.sortTask({
+            by,
+            value
+        });
         
     }
 
     checkSelected = (by, value) => {
-        if(this.state.sort.by === by && this.state.sort.value === value) {
+        if(this.props.sort.by === by && this.props.sort.value === value) {
             return 'sort_selected'
         }
     }
@@ -72,3 +64,24 @@ export default class Sort extends Component {
         )
     }
 }
+
+
+const mapStateToProps = (state) => {
+    return {
+        sort: state.sortTask
+    }
+}
+
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        sortTask: (sort) => {
+            dispatch(actions.sortTask(sort))
+        }
+    }
+}
+
+
+
+
+export default connect(mapStateToProps, mapDispatchToProps) (Sort)

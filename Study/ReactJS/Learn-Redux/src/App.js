@@ -8,155 +8,35 @@ import {connect} from 'react-redux';
 import * as actions from './actions/index';
 
 class App extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            
-            filter: {
-                name: '',
-                status: -1
-            },
-            keyword: '',
-            sort: {
-                by: 'name', //Sắp xếp theo tên
-                value: 1 //Sắp xếp tăng dần
-            }
-        };
-    }
+    
 
 
 
 
-    //Handle form
-    toggleForm = () => {
-        if(this.props.taskEditing && this.props.taskEditing.id) {
+    onToggleForm = () => {
+        let taskEditing = this.props.taskEditing;
+        if(taskEditing && taskEditing.id) {
             this.props.onClearTask({
                 id: '',
                 name: '',
                 status: 'false'
-            });
+            })
+    
         }else {
             this.props.toggleForm();
         }
-    
         
     }
-
-
-    showForm = () => {
-        this.setState({
-            isDisplayForm: true
-        })
-    }
-
-
-
-  
-
-    findIndex = (id) => {
-        let {tasks} = this.state;
-        let result = -1;
-        tasks.forEach((task, index) => {
-            
-            if(task.id === id) {
-                result = index;
-            }
-
-        });
-        return result;
-        
-    }
-
-
-
-
-    //Filter 
-    filter = (filterName, filterStatus) => {
-        this.setState({
-            filter: {
-                name: filterName.toLowerCase(),
-                status: filterStatus
-            }
-        })
-    }
-
-    //Search
-    search = (keyword) => {
-        this.setState({
-            keyword: keyword.toLowerCase()
-        })
-
-    }
-
-    //Sort
-    sort = async (sort) => {
-        await Promise.resolve( this.setState({
-            sort: {
-                by: sort.by, 
-                value: sort.value
-            }
-        }));
-        
-        
-    }
-
-    
-
 
 
     render() {
-        let {   filter, keyword, sort} = this.state;
+    
 
 
         let isDisplayForm = this.props.isDisplayForm;
 
 
 
-
-
-        // if(filter) {
-        //     if(filter.name) {
-        //         tasks = tasks.filter(task => {
-        //             return task.name.toLowerCase().includes(filter.name) 
-        //         })
-        //     }
-        //     // tasks = tasks.filter(task => {
-        //     //     if(filter.status === -1) {
-        //     //         return task
-        //     //     }else {
-        //     //         return task.status === (filter.status === 1 ? true: false)
-        //     //     }
-        //     // })
-        // }
-        // if(keyword) {
-        //     tasks = tasks.filter(task => {
-        //         return task.name.toLowerCase().includes(keyword) 
-        //     })
-        // }
-        // //a và b là từng phần tử của mảng, return về số lớn hơn không thì sẽ là sắp xếp giảm dần để số to lên trước, trả về nhỏ hơn không sẽ là tăng dần để số nhỏ lên trước
-        // if(sort.by === 'name') {
-        //     tasks.sort((a, b) => {
-        //         if(a.name > b.name) {
-        //             return sort.value
-        //         }else if(a.name < b.name) {
-        //             return -sort.value
-        //         }
-        //         else {
-        //             return 0
-        //         }
-        //     })
-        // }else {
-        //     tasks.sort((a, b) => {
-        //         if(a.status > b.status) {
-        //             return -sort.value
-        //         }else if(a.status < b.status) {
-        //             return sort.value
-        //         }
-        //         else {
-        //             return 0
-        //         }
-        //     })
-        // }
 
     
         return (
@@ -173,20 +53,13 @@ class App extends Component {
                             <button 
                             type="button" 
                             className="btn btn-primary"
-                            onClick = {this.toggleForm}
+                            onClick = {() => this.onToggleForm()}
                             >
                                 <span className="fa fa-plus mr-5"></span> Thêm Công Việc
                             </button>
-                            {/* <button 
-                            type="button" 
-                            className="btn btn-danger ml-5"
-                            onClick = {this.generateData}
-                            >
-                                Tạo dữ liệu mẫu
-                            </button> */}
                             
                                 <Control 
-                                search = {this.search}
+                                
                                 sort = {this.sort}
                             
                                 />
@@ -194,7 +67,6 @@ class App extends Component {
                             <div className="row mt-15">
                                 <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                                 <TaskList
-                                filter = {this.filter}
                                 />
                                 </div>
                             </div>
