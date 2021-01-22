@@ -14,7 +14,7 @@
 </head>
 
 <body>
-    <input type="file" id = "photo">
+    <input type="file" id = "photo" multiple>
     <img id = "image" >
     <button onclick = "uploadImage()">Upload</button>
     <button onclick = "downloadImage()">Download</button>
@@ -52,31 +52,31 @@
             const ref = firebase.storage().ref();
             
             //Tao bien lay file upload qua input
-            const file = document.getElementById('photo').files[0];
-            console.log(file);
-
+            const file = document.getElementById('photo').files;
+            const fileArray = Object.values(file);
+            console.log(fileArray);
             // //Tao name khi upload len firebase
-            const name = new Date() + '-' + file.name;
+            // const name = new Date() + '-' + file.name;
 
-            //config kieu du lieu uplen firebase
-            const metadata = {
-                contentType: file.type
-            }
+            // //config kieu du lieu uplen firebase
+            // const metadata = {
+            //     contentType: file.type
+            // }
 
-            // //upload len firebase
-            ref.child(`images/${name}`).put(file, metadata)
-                .then(snapshot => snapshot.ref.getDownloadURL())
-                .then(url => {
-                    console.log(url);
-                    alert('Upload thanh cong')
-                    document.getElementById('image').src = url;
-                })
+            // // //upload len firebase
+            // ref.child(`images/${name}`).put(file, metadata)
+            //     .then(snapshot => snapshot.ref.getDownloadURL())
+            //     .then(url => {
+            //         console.log(url);
+            //         alert('Upload thanh cong')
+            //         document.getElementById('image').src = url;
+            //     })
         }
 
             //Download anh tu firebase
         function downloadImage() {
             const ref = firebase.storage().ref();
-            ref.child(`images/Sat Jan 16 2021 09:37:25 GMT+0700 (Indochina Time)-Background.jpg`).getDownloadURL()
+            ref.child(`images/Tue Jan 19 2021 21:31:53 GMT+0700 (Indochina Time)-Wallpaper.jpg`).getDownloadURL()
                 .then(url => {
                     document.getElementById('image').src = url;
             })
