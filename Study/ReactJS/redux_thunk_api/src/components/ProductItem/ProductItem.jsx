@@ -1,8 +1,9 @@
 import React from 'react';
 
-function ProductItem({ product, index }) {
-    const statusName = product.status ? 'Còn Hàng' : 'Hết hàng';
-    const statusClass = product.status ? 'label label-warning' : 'label label-default';
+function ProductItem({ product, index, onDelete }) {
+    const statusName = product.status === 'true' ? 'Còn Hàng' : 'Hết hàng';
+    const statusClass = product.status === 'true' ? 'label label-warning' : 'label label-default';
+
     return (
         <tr>
             <td>{index + 1}</td>
@@ -16,7 +17,10 @@ function ProductItem({ product, index }) {
                 <button type='button' className='btn btn-success mr-20'>
                     Sửa
                 </button>
-                <button type='button' className='btn btn-danger'>
+                <button
+                    type='button'
+                    className='btn btn-danger'
+                    onClick={() => onDelete(product.id)}>
                     Xóa
                 </button>
             </td>

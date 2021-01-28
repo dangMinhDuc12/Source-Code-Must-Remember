@@ -1,0 +1,16 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "name": "Iphone 12 Promax",
+      "price": 100,
+      "status": "true"
+    },
+    {
+      "id": 2,
+      "name": "Samsung Glaxy S21",
+      "price": 200,
+      "status": "false"
+    }
+  ]
+}
