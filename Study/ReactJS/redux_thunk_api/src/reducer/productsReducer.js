@@ -1,26 +1,19 @@
-const initialState = [
-    {
-        id: 1,
-        name: 'Iphone 12 promax',
-        price: 400,
-        status: 'true',
-    },
-    {
-        id: 2,
-        name: 'Samsung 12 promax',
-        price: 500,
-        status: 'false',
-    },
-    {
-        id: 3,
-        name: 'Realme 12 promax',
-        price: 600,
-        status: 'true',
-    },
-];
+const initialState = [];
 
 const productsReducer = (state = initialState, action) => {
     switch (action.type) {
+        case 'FETCH_DATA':
+            return [...action.data];
+
+        case 'DELETE_DATA':
+            const stateAfterDelete = [...state];
+            const indexToDelete = stateAfterDelete.findIndex((product) => product.id === action.id);
+            stateAfterDelete.splice(indexToDelete, 1);
+            return [...stateAfterDelete];
+
+        case 'REDIRECT':
+            const stateAfterRedirect = [...state];
+            return [...stateAfterRedirect];
         default:
             return state;
     }

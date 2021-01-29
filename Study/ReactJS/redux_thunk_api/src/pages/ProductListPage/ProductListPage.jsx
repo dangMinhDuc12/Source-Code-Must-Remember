@@ -1,43 +1,22 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import ProductList from '../../components/ProductList/ProductList';
 import ProductItem from '../../components/ProductItem/ProductItem';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { fetchProducts, deleteProducts } from '../../actions/products';
 
 function ProductListPage() {
-    // const products = useSelector((state) => state.products);
-    const [products, setProducts] = useState([]);
+    const products = useSelector((state) => state.products);
+    const dispatch = useDispatch();
 
     useEffect(() => {
-        async function getData() {
-            const res = await fetch('http://localhost:3004/products');
-            const data = await res.json();
-            setProducts(data);
-        }
-
-        getData();
+        dispatch(fetchProducts());
     }, []);
 
-    async function onDelete(id) {
+    function onDelete(id) {
         if (window.confirm('Bạn có chắc chắn muốn xóa')) {
-            await fetch(`http://localhost:3004/products/${id}`, {
-                method: 'DELETE',
-            });
-            const indexToDelete = findIndex(products, id);
-            const newProducts = [...products];
-            newProducts.splice(indexToDelete, 1);
-            setProducts(newProducts);
+            dispatch(deleteProducts(id));
         }
-    }
-
-    function findIndex(products, id) {
-        let result;
-        products.forEach((item, index) => {
-            if (item.id === id) {
-                result = index;
-            }
-        });
-        return result;
     }
 
     function showProducts(products) {

@@ -1,16 +1,40 @@
 {
   "products": [
     {
-      "id": 1,
-      "name": "Iphone 12 Promax",
+      "name": "Iphone 12 Promax Pro",
       "price": 100,
-      "status": "true"
+      "status": "true",
+      "id": 1
     },
     {
-      "id": 2,
-      "name": "Samsung Glaxy S21",
+      "name": "Samsung Glaxy S21 mới nhất",
       "price": 200,
-      "status": "false"
+      "status": "true",
+      "id": 2
+    },
+    {
+      "name": "Realme 7",
+      "price": 500,
+      "status": "false",
+      "id": 3
+    },
+    {
+      "name": "Vertu 2",
+      "price": 69000,
+      "status": "false",
+      "id": 4
+    },
+    {
+      "name": "Xiaomi",
+      "price": 12000,
+      "status": "false",
+      "id": 5
+    },
+    {
+      "name": "Lân đẹp trai",
+      "price": 69,
+      "status": "false",
+      "id": 6
     }
   ]
 }

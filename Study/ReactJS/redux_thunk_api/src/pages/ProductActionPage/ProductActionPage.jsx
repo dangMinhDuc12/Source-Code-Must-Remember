@@ -1,31 +1,57 @@
-import React, { useRef } from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import React, { useEffect, useRef } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { Link, useHistory, useParams } from 'react-router-dom';
+import { addProduct, fetchDataWithId, updateProduct } from '../../actions/products';
 
 function ProductActionPage() {
     let name = useRef();
     let price = useRef();
     let status = useRef();
     const history = useHistory();
+    const { id } = useParams();
+    const productEdit = useSelector((state) => state.productEdit);
+    const products = useSelector((state) => state.products);
+    const dispatch = useDispatch();
+
+    // if (productEdit) {
+    //     console.log(productEdit);
+    //     name.current.value = productEdit.name;
+    //     price.current.value = productEdit.price;
+    //     status.current.checked = productEdit.status === 'true' ? true : false;
+    // }
+
+    useEffect(() => {
+        if (id) {
+            console.log(products);
+        }
+    }, []);
 
     async function onSubmit(e) {
         e.preventDefault();
-
-        const res = await fetch('http://localhost:3004/products', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                name: name.current.value,
-                price: Number(price.current.value),
-                status: status.current.checked.toString(),
-            }),
-        });
-        const data = await res.json();
-        name.current.value = '';
-        price.current.value = '';
-        status.current.checked = false;
-        history.push('/product-list');
+        if (!id) {
+            dispatch(
+                addProduct({
+                    name: name.current.value,
+                    price: Number(price.current.value),
+                    status: status.current.checked.toString(),
+                })
+            );
+            name.current.value = '';
+            price.current.value = '';
+            status.current.checked = false;
+            history.push('/product-list');
+        }
+        // dispatch(
+        //     updateProduct(
+        //         {
+        //             name: name.current.value,
+        //             price: Number(price.current.value),
+        //             status: status.current.checked.toString(),
+        //         },
+        //         id
+        //     )
+        // );
+        // history.push('/product-list');
     }
 
     return (

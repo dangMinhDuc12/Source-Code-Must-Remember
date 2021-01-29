@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 function ProductItem({ product, index, onDelete }) {
     const statusName = product.status === 'true' ? 'Còn Hàng' : 'Hết hàng';
@@ -14,9 +15,9 @@ function ProductItem({ product, index, onDelete }) {
                 <span className={statusClass}>{statusName}</span>
             </td>
             <td>
-                <button type='button' className='btn btn-success mr-20'>
+                <Link to={`/product/${product.id}/edit`} className='btn btn-success mr-20'>
                     Sửa
-                </button>
+                </Link>
                 <button
                     type='button'
                     className='btn btn-danger'
