@@ -10,11 +10,21 @@ function ProductListPage() {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        dispatch(fetchProducts());
+        async function getProducts() {
+            const res = await fetch(' http://localhost:3004/products');
+            const data = await res.json();
+            dispatch(fetchProducts(data));
+        }
+
+        getProducts();
     }, []);
 
-    function onDelete(id) {
+    async function onDelete(id) {
         if (window.confirm('Bạn có chắc chắn muốn xóa')) {
+            await fetch(`http://localhost:3004/products/${id}`, {
+                method: 'DELETE',
+            });
+
             dispatch(deleteProducts(id));
         }
     }

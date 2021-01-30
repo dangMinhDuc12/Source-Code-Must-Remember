@@ -2,8 +2,10 @@ const initialState = {};
 
 const productEditReducer = (state = initialState, action) => {
     switch (action.type) {
-        case 'FETCH_DATA_ID':
-            return action.data;
+        case 'FETCH_PRODUCT':
+            return {
+                ...action.product,
+            };
 
         default:
             return state;

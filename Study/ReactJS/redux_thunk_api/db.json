@@ -19,20 +19,14 @@
       "id": 3
     },
     {
-      "name": "Vertu 2",
-      "price": 69000,
-      "status": "false",
-      "id": 4
-    },
-    {
       "name": "Xiaomi",
       "price": 12000,
       "status": "false",
       "id": 5
     },
     {
-      "name": "Lân đẹp trai",
-      "price": 69,
+      "name": "Oppo",
+      "price": 6969,
       "status": "false",
       "id": 6
     }
