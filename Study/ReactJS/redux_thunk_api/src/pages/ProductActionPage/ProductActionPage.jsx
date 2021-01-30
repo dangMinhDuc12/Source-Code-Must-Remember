@@ -1,57 +1,55 @@
 import React, { useEffect, useRef } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { Link, useHistory, useParams } from 'react-router-dom';
-import { addProduct, fetchDataWithId, updateProduct } from '../../actions/products';
 
-function ProductActionPage() {
+import { Link, useHistory, useParams } from 'react-router-dom';
+
+import { connect } from 'react-redux';
+
+function ProductActionPage({ productEdit }) {
     let name = useRef();
     let price = useRef();
     let status = useRef();
     const history = useHistory();
     const { id } = useParams();
-    const productEdit = useSelector((state) => state.productEdit);
-    const products = useSelector((state) => state.products);
-    const dispatch = useDispatch();
-
-    // if (productEdit) {
-    //     console.log(productEdit);
-    //     name.current.value = productEdit.name;
-    //     price.current.value = productEdit.price;
-    //     status.current.checked = productEdit.status === 'true' ? true : false;
-    // }
 
     useEffect(() => {
-        if (id) {
-            console.log(products);
+        async function fetchProduct() {
+            if (id) {
+                const res = await fetch(`http://localhost:3004/products/${id}`);
+                const data = await res.json();
+                name.current.value = data.name;
+                price.current.value = data.price;
+                status.current.checked = data.status === 'true' ? true : false;
+            }
         }
+
+        fetchProduct();
     }, []);
 
     async function onSubmit(e) {
         e.preventDefault();
         if (!id) {
-            dispatch(
-                addProduct({
+            await fetch('http://localhost:3004/products', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
                     name: name.current.value,
                     price: Number(price.current.value),
                     status: status.current.checked.toString(),
-                })
-            );
-            name.current.value = '';
-            price.current.value = '';
-            status.current.checked = false;
+                }),
+            });
+            history.push('/product-list');
+        } else {
+            await fetch(`http://localhost:3004/products/${id}`, {
+                method: 'PUT',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    name: name.current.value,
+                    price: Number(price.current.value),
+                    status: status.current.checked.toString(),
+                }),
+            });
             history.push('/product-list');
         }
-        // dispatch(
-        //     updateProduct(
-        //         {
-        //             name: name.current.value,
-        //             price: Number(price.current.value),
-        //             status: status.current.checked.toString(),
-        //         },
-        //         id
-        //     )
-        // );
-        // history.push('/product-list');
     }
 
     return (
@@ -89,4 +87,8 @@ function ProductActionPage() {
     );
 }
 
-export default ProductActionPage;
+const mapStateToProps = (state) => ({
+    productEdit: state.productEdit,
+});
+
+export default connect(mapStateToProps)(ProductActionPage);
