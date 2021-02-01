@@ -13,6 +13,13 @@ html {
 .header {
     height: 46px;
     background-color: black;
+    display: flex;
+    justify-content: space-between;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1;
 }
 
 .header__nav {
@@ -41,7 +48,7 @@ html {
     display: none;
     position: absolute;
     list-style: none;
-    background-color: yellow;
+    background-color: white;
     box-shadow: 0px 0px 10px grey;
     min-width: 160px;
     top: 101%;
@@ -64,9 +71,284 @@ html {
     padding: 10px 16px;
 }
 
-.slider {
+.header_nav_item_link_icon {
+    font-size: 14px;
 }
+
+.header_search-btn_icon.ti-search {
+    color: white;
+    display: block;
+    line-height: 46px;
+    padding: 0 23px;
+    cursor: pointer;
+}
+
+.header_search-btn:hover {
+    background-color: red;
+}
+
+.slider {
+    margin-top: 46px;
+    padding-top: 50%;
+    background-image: url('https://www.w3schools.com/bootstrap/chicago.jpg');
+    background-size: cover;
+    background-position: center bottom;
+    position: relative;
+}
+
+.slider_text {
+    position: absolute;
+    bottom: 47px;
+    color: white;
+    width: 100%;
+    text-align: center;
+}
+
+.slider_text_heading {
+    font-weight: 500;
+    font-size: 24px;
+    margin-bottom: 25px;
+}
+
+.slider_text_des {
+    font-size: 15px;
+}
+
 .content {
 }
+
+.content .content-section {
+    width: 800px;
+    margin: 0 auto;
+    padding: 64px 0;
+}
+
+.content .section-heading {
+    text-align: center;
+    font-size: 30px;
+    font-weight: 500;
+    letter-spacing: 4px;
+}
+
+.content .section-sub-heading {
+    text-align: center;
+    font-size: 15px;
+    margin-top: 25px;
+    margin-bottom: 10px;
+    font-style: italic;
+    color: #777;
+}
+
+.content .about-text {
+    text-align: justify;
+    line-height: 1.4;
+    margin-bottom: 10px;
+}
+
+.member-list {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 40px;
+}
+
+.member-item {
+}
+
+.member-name {
+    text-align: center;
+    color: #777;
+    font-size: 15px;
+}
+
+.member-img {
+    width: 232px;
+    height: 232px;
+    border-radius: 50%;
+    margin: 50px 0;
+}
+
+.tour-section {
+    background-color: black;
+}
+.tour-section .section-heading {
+    color: white;
+}
+
+.ticket-list {
+    background-color: white;
+    margin-top: 40px;
+    list-style: none;
+}
+
+.ticket-list li {
+    font-size: 15px;
+    padding: 16px 16px;
+    border-bottom: 1px solid #ddd;
+    color: #757575;
+}
+
+.sold-out {
+    background-color: #d9534f;
+    color: white;
+    padding: 3px 4px;
+    margin-left: 16px;
+}
+
+.flex-ticket {
+    display: flex;
+    justify-content: space-between;
+}
+
+.quantity {
+    width: 24px;
+    height: 24px;
+    background-color: black;
+    text-align: center;
+    line-height: 24px;
+    color: white;
+    border-radius: 50%;
+}
+
+.places-list {
+    margin-top: 32px;
+    display: flex;
+    margin-left: -8px;
+    margin-right: -8px;
+    padding-bottom: 48px;
+}
+
+.place-item {
+    width: 33.33333%;
+    padding: 0 8px;
+}
+.place-img {
+    width: 100%;
+    display: block;
+}
+
+.place-body {
+    background-color: white;
+    padding: 16px;
+    font-size: 15px;
+}
+
+.place-img:hover {
+    opacity: 0.6;
+}
+
+.place-heading {
+    font-size: 15px;
+    font-weight: 600;
+}
+.place-time {
+    margin-top: 15px;
+    color: #757575;
+}
+.place-desc {
+    margin-top: 15px;
+    line-height: 1.4;
+}
+
+.place-buy-btn {
+    padding: 11px 16px;
+    color: white;
+    text-decoration: none;
+    background-color: black;
+    display: inline-block;
+    margin-top: 18px;
+}
+
+.place-buy-btn:hover {
+    background-color: #ccc;
+    color: black;
+}
+
+.contact {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+}
+
+.contact-icon {
+    color: black;
+}
+
+.contact-left span {
+    margin-left: 10px;
+}
+
+.contact-left p .span-email {
+    margin-left: 4px;
+}
+
+.contact-left p {
+    margin: 5px 0;
+}
+
+.name-email {
+    display: flex;
+    justify-content: space-between;
+}
+
+.name-email-left {
+    width: 49%;
+}
+
+.name-email-left input {
+    width: 100%;
+    padding: 5px;
+}
+
+.message .message-full input {
+    width: 100%;
+    padding: 5px;
+    margin-top: 5px;
+}
+
+.submit {
+    text-align: right;
+    margin-top: 20px;
+}
+
+.submit input {
+    background-color: black;
+    color: white;
+    padding: 10px;
+}
+
+.submit input:hover {
+    cursor: pointer;
+}
+
+.map-section img {
+    width: 100%;
+}
+
 .footer {
+    padding: 64px 16px;
+    text-align: center;
+    background-color: #ccc;
+    margin-top: -4px;
+}
+
+.social {
+    font-size: 24px;
+}
+
+.social a {
+    text-decoration: none;
+    color: rgba(0, 0, 0, 0.6);
+}
+
+.social a:hover {
+    color: rgba(0, 0, 0, 0.3);
+}
+
+.copyright {
+    margin-top: 15px;
+    color: rgba(0, 0, 0, 0.6);
+}
+
+.copyright a {
+    color: rgba(0, 0, 0, 0.6);
 }

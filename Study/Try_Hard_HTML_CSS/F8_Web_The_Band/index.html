@@ -4,12 +4,19 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Document</title>
+        <link
+            rel="icon"
+            href="https://scontent.fhan2-3.fna.fbcdn.net/v/t1.0-1/c233.253.753.753a/s240x240/88186008_2757115877736651_501647021917077504_o.jpg?_nc_cat=108&ccb=2&_nc_sid=7206a8&_nc_ohc=KbWiq2JrPKAAX8st_mR&_nc_ht=scontent.fhan2-3.fna&tp=28&oh=847cbf2a741d7e5560fd9d2440b43421&oe=603CC19A"
+            type="image/icon type"
+        />
         <link rel="stylesheet" href="./assets/css/style.css" />
+        <link rel="stylesheet" href="./assets/fonts/themify-icons/themify-icons.css" />
     </head>
 
     <body>
         <div class="wrapper">
             <div class="header">
+                <!-- Nav -->
                 <ul class="header__nav">
                     <li class="header__nav-item">
                         <a class="header__nav-item-link" href="">Home</a>
@@ -24,7 +31,10 @@
                         <a class="header__nav-item-link" href="">Contact</a>
                     </li>
                     <li class="header__nav-item header__nav-item--show-more">
-                        <a class="header__nav-item-link" href="">More</a>
+                        <a class="header__nav-item-link" href="">
+                            More
+                            <i class="ti-angle-down header_nav_item_link_icon"></i>
+                        </a>
                         <ul class="header__nav-item-subnav">
                             <li class="header__nav-item-subnav-item">
                                 <a class="header__nav-item-subnav-item-link" href="">Merchandise</a>
@@ -38,13 +48,197 @@
                         </ul>
                     </li>
                 </ul>
+
+                <!-- Search-button -->
+                <div class="header_search-btn">
+                    <i class="ti-search header_search-btn_icon"></i>
+                </div>
             </div>
 
-            <div class="slider"></div>
+            <div class="slider">
+                <div class="slider_text">
+                    <h1 class="slider_text_heading">New York</h1>
+                    <p class="slider_text_des">The atmosphere in New York is lorem ipsum.</p>
+                </div>
+            </div>
 
-            <div class="content"></div>
+            <div class="content">
+                <div class="content-section">
+                    <h2 class="section-heading">THE BAND</h2>
+                    <p class="section-sub-heading">We love music</p>
+                    <p class="about-text">
+                        We have created a fictional band website. Lorem ipsum dolor sit amet,
+                        consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+                        dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+                        ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
+                        dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+                        pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui
+                        officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed
+                        do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+                        minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
+                        ea commodo consequat.
+                    </p>
+                    <div class="member-list">
+                        <div class="member-item">
+                            <p class="member-name">Name</p>
+                            <img
+                                src="https://www.w3schools.com/bootstrap/bandmember.jpg"
+                                alt=""
+                                class="member-img"
+                            />
+                        </div>
+                        <div class="member-item">
+                            <p class="member-name">Name</p>
+                            <img
+                                src="https://www.w3schools.com/bootstrap/bandmember.jpg"
+                                alt=""
+                                class="member-img"
+                            />
+                        </div>
+                        <div class="member-item">
+                            <p class="member-name">Name</p>
+                            <img
+                                src="https://www.w3schools.com/bootstrap/bandmember.jpg"
+                                alt=""
+                                class="member-img"
+                            />
+                        </div>
+                    </div>
+                </div>
+                <div class="tour-section">
+                    <div class="content-section">
+                        <h2 class="section-heading">TOUR DATES</h2>
+                        <p class="section-sub-heading">
+                            Lorem ipsum we'll play you some music. Remember to book your tickets!
+                        </p>
+                        <ul class="ticket-list">
+                            <li>September <span class="sold-out">Sold Out</span></li>
+                            <li>October <span class="sold-out">Sold Out</span></li>
+                            <li class="flex-ticket">
+                                <p>November</p>
+                                <p class="quantity">3</p>
+                            </li>
+                        </ul>
 
-            <div class="footer"></div>
+                        <div class="places-list">
+                            <div class="place-item">
+                                <img
+                                    src="https://www.w3schools.com/bootstrap/paris.jpg"
+                                    alt=""
+                                    class="place-img"
+                                />
+                                <div class="place-body">
+                                    <h3 class="place-heading">New York</h3>
+                                    <p class="place-time">Friday 27 November 2015</p>
+                                    <p class="place-desc">
+                                        Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                                        Ducimus atque tempora et dignissimos vel perferendis soluta
+                                    </p>
+                                    <a href="#" class="place-buy-btn">Buy Tickets</a>
+                                </div>
+                            </div>
+                            <div class="place-item">
+                                <img
+                                    src="https://www.w3schools.com/bootstrap/paris.jpg"
+                                    alt=""
+                                    class="place-img"
+                                />
+                                <div class="place-body">
+                                    <h3 class="place-heading">New York</h3>
+                                    <p class="place-time">Friday 27 November 2015</p>
+                                    <p class="place-desc">
+                                        Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                                        Ducimus atque tempora et dignissimos vel perferendis soluta
+                                    </p>
+                                    <a href="#" class="place-buy-btn">Buy Tickets</a>
+                                </div>
+                            </div>
+                            <div class="place-item">
+                                <img
+                                    src="https://www.w3schools.com/bootstrap/paris.jpg"
+                                    alt=""
+                                    class="place-img"
+                                />
+                                <div class="place-body">
+                                    <h3 class="place-heading">New York</h3>
+                                    <p class="place-time">Friday 27 November 2015</p>
+                                    <p class="place-desc">
+                                        Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                                        Ducimus atque tempora et dignissimos vel perferendis soluta
+                                    </p>
+                                    <a href="#" class="place-buy-btn">Buy Tickets</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="content-section">
+                    <h2 class="section-heading">CONTACT</h2>
+                    <p class="section-sub-heading">We love our fans!</p>
+
+                    <div class="contact">
+                        <div class="contact-left">
+                            <p>
+                                <i class="ti-location-pin contact-icon"></i><span>Chicago, US</span>
+                            </p>
+                            <p>
+                                <i class="ti-mobile contact-icon"></i><span>Phone: 0984606296</span>
+                            </p>
+                            <p>
+                                <i class="ti-email contact-icon"></i>
+                                <span class="span-email">Email: dangminhduca3@gmail.com</span>
+                            </p>
+                        </div>
+                        <div class="contact-right">
+                            <form action="">
+                                <div class="name-email">
+                                    <div class="name-email-left">
+                                        <input
+                                            type="text"
+                                            class="form-control"
+                                            placeholder="Name"
+                                        />
+                                    </div>
+                                    <div class="name-email-left">
+                                        <input
+                                            type="text"
+                                            class="form-control"
+                                            placeholder="Password"
+                                        />
+                                    </div>
+                                </div>
+                                <div class="message">
+                                    <div class="message-full">
+                                        <input
+                                            type="text"
+                                            class="form-control"
+                                            placeholder="Message"
+                                        />
+                                    </div>
+                                </div>
+                                <div class="submit">
+                                    <input type="submit" value="SEND" />
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="map-section">
+                    <img src="https://www.w3schools.com/bootstrap/map.jpg" alt="" />
+                </div>
+            </div>
+
+            <div class="footer">
+                <div class="social">
+                    <a href=""><i class="ti-facebook"></i></a>
+                    <a href=""><i class="ti-instagram"></i></a>
+                    <a href=""><i class="ti-pinterest"></i></a>
+                    <a href=""><i class="ti-linkedin"></i></a>
+                    <a href=""><i class="ti-twitter"></i></a>
+                    <a href=""><i class="ti-youtube"></i></a>
+                </div>
+                <p class="copyright">Powered by <a href="#">w3.css</a></p>
+            </div>
         </div>
     </body>
 </html>
