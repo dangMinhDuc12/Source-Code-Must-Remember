@@ -53,6 +53,9 @@
                 <div class="header_search-btn">
                     <i class="ti-search header_search-btn_icon"></i>
                 </div>
+                <div class="mobile-menu-btn">
+                    <i class="ti-align-justify mobile-menu-btn-icon"></i>
+                </div>
             </div>
 
             <div class="slider">
@@ -240,5 +243,15 @@
                 <p class="copyright">Powered by <a href="#">w3.css</a></p>
             </div>
         </div>
+
+        <script>
+            document.querySelector('.mobile-menu-btn').onclick = () => {
+                if (document.querySelector('.header').clientHeight === 46) {
+                    document.querySelector('.header').style.height = 'auto';
+                } else {
+                    document.querySelector('.header').style.height = '46px';
+                }
+            };
+        </script>
     </body>
 </html>
