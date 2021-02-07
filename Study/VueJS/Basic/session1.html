@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <style>
+            .ex2 {
+                display: flex;
+            }
+            .square {
+                width: 100px;
+                height: 100px;
+                background-color: red;
+                margin: 0 20px;
+            }
+            .blue {
+                background-color: blue;
+            }
+            .green {
+                background-color: green;
+            }
+            .yellow {
+                background-color: yellow;
+            }
+        </style>
+    </head>
+    <body>
+        <!-- <div class="obj">
+            <input type="text" v-on:input="changeValue" />
+            <p>{{content}}</p>
+        </div>
+
+        <div class="templateHTML">
+            <p v-html="testHTML"></p>
+            <p v-once>{{content}} - {{sayHello()}}</p>
+            <a v-bind:href="link">Google</a>
+            Muốn làm việc với attributes ta phải bind lại attributes đó với v-bind Dùng v-once để
+            giữ lại giá trị trước khi update Dùng v-html để hiện thị nguyên gốc mã HTML
+        </div>
+
+        <div class="handleEvent">
+            <h1>Bấm nút để tăng giá trị - {{count}}</h1>
+            <p v-on:mousemove="calPos">Tọa độ của chuột {{x}} / {{y}}</p>
+
+            <button v-on:click="upValue">Tăng giá trị</button>
+
+            Lắng nghe sự kiện dùng v-on:event Dừng sự kiện dùng v-on:event.stop=""
+        </div>
+
+        <div class="keyboard-event">
+            <input type="text" v-on:keyup.enter="handleKeyBoardEvent" />
+        </div>
+
+        <div class="otherBinding">
+            <input type="text" v-model="name" />
+            <p>{{name}}</p>
+        </div>
+
+        <div class="ex1">
+            <p>Giá trị A: {{upA}}</p>
+            <p>Giá trị B: {{upB}}</p>
+            <button v-on:click="a++">Tăng A</button>
+            <button v-on:click="b++">Tăng B</button>
+        </div>
+
+        <div class="watch">
+            <p>{{mark}}</p>
+        </div>
+
+        <div class="shortHand">
+            <button @click="changeLink">Click to change link</button>
+            <a v-bind:href="link">Link</a>
+        </div>
+
+        <div class="ex2">
+            <div
+                class="square"
+                v-on:click="isGreen = !isGreen; pink='yellow'"
+                v-bind:class="{green: isGreen}"
+            ></div>
+            <div class="square" v-bind:style="[changeBackground, {width:'200px'}]"></div>
+            <div class="square"></div>
+            <div class="square" v-bind:class=" color"></div>
+            <input type="text" v-model="color" />
+        </div> -->
+
+        <div class="formInput">
+            <input type="text" v-model="input" />
+            <span>Input có giá trị là {{input}}</span>
+
+            <input type="checkbox" id="checkbox" v-model="checked" />
+            <label for="checkbox">Input type bằng check {{ checked }}</label>
+
+            <input type="checkbox" id="jack" value="Jack" v-model="checkboxArray" />
+            <label for="jack">Jack</label>
+            <input type="checkbox" id="john" value="John" v-model="checkboxArray" />
+            <label for="john">John</label>
+            <input type="checkbox" id="mike" value="Mike" v-model="checkboxArray" />
+            <label for="mike">Mike</label>
+            <br />
+            <span>Checked names: {{ checkboxArray }}</span>
+
+            <input type="radio" id="one" value="One" v-model="picked" />
+            <label for="one">One</label>
+            <br />
+            <input type="radio" id="two" value="Two" v-model="picked" />
+            <label for="two">Two</label>
+            <br />
+            <span>Picked: {{ picked }}</span>
+
+            <select v-model="selected">
+                <option disabled value="">Please select one</option>
+                <option>A</option>
+                <option>B</option>
+                <option>C</option>
+            </select>
+            <span>Selected: {{ selected }}</span>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+        <script>
+            // new Vue({
+            //     el: '.obj',
+            //     data: {
+            //         content: 'Hello World ',
+            //     },
+            //     methods: {
+            //         changeValue: function (e) {
+            //             this.content = e.target.value;
+            //         },
+            //     },
+            // });
+
+            // new Vue({
+            //     el: '.templateHTML',
+            //     data: {
+            //         content: 'Hello World 2 ',
+            //         link: 'https://www.google.com/',
+            //         testHTML: '<h1>Test Mã HTML</h1>',
+            //     },
+            //     methods: {
+            //         sayHello: function (params) {
+            //             // console.log(`Hello ${params}`);
+            //             // console.log(`Content: ${this.content}`);
+            //             this.content = 'Đã cập nhật';
+            //             return this.content;
+            //         },
+            //     },
+            // });
+
+            // new Vue({
+            //     el: '.handleEvent',
+            //     data: {
+            //         count: 0,
+            //         x: 0,
+            //         y: 0,
+            //     },
+            //     methods: {
+            //         upValue: function () {
+            //             this.count += 1;
+            //         },
+            //         calPos: function (e) {
+            //             this.x = e.clientX;
+            //             this.y = e.clientY;
+            //         },
+            //         log(a) {
+            //             console.log(a);
+            //         },
+            //     },
+            // });
+
+            // new Vue({
+            //     el: '.keyboard-event',
+            //     data: {},
+            //     methods: {
+            //         handleKeyBoardEvent: function (e) {
+            //             console.log(e.target.value);
+            //         },
+            //     },
+            // });
+
+            // new Vue({
+            //     el: '.otherBinding',
+            //     data: {
+            //         name: ' Đặng Minh Đức',
+            //     },
+            //     methods: {},
+            // });
+
+            // new Vue({
+            //     el: '.ex1',
+            //     data: {
+            //         a: 0,
+            //         b: 0,
+            //     },
+            //     computed: {
+            //         upA: function () {
+            //             console.log('function tăng a');
+            //             return this.a;
+            //         },
+            //         upB: function () {
+            //             console.log('function tăng b');
+            //             return this.b;
+            //         },
+            //     },
+            //     methods: {},
+            // });
+            // //Computed mặc định giống với getter trong class, ta có thể setter với nó
+
+            // const app = new Vue({
+            //     el: '.watch',
+            //     data: {
+            //         mark: 'Bạn Hùng có môn toán được 7 điểm',
+            //     },
+            //     watch: {
+            //         mark: function (newValue, oldValue) {
+            //             console.log(`Điểm đã được thay đổi sang từ ${oldValue} ---> ${newValue}`);
+            //         },
+            //     },
+            //     methods: {},
+            // });
+
+            // app.mark = 'Bạn Hùng có môn toán được 9 điểm';
+
+            // // watch giúp ta theo dõi sự thay đổi của 1 data con nếu có thay đổi nó sẽ lọt vào hàm đó, tên hàm sẽ là biến cần theo dõi
+
+            // new Vue({
+            //     el: '.shortHand',
+            //     data: {
+            //         link: 'http://www.google.com',
+            //     },
+            //     methods: {
+            //         changeLink: function () {
+            //             this.link = 'http://www.facebook.com';
+            //         },
+            //     },
+            // });
+
+            // new Vue({
+            //     el: '.ex2',
+            //     data: {
+            //         isGreen: true,
+            //         color: '',
+            //         pink: 'pink',
+            //     },
+            //     computed: {
+            //         changeBackground: function () {
+            //             return {
+            //                 backgroundColor: this.color,
+            //             };
+            //         },
+            //     },
+            // });
+
+            new Vue({
+                el: '.formInput',
+                data: {
+                    input: '',
+                    checked: false,
+                    checkboxArray: [],
+                    picked: '',
+                    selected: '',
+                },
+            });
+        </script>
+    </body>
+</html>

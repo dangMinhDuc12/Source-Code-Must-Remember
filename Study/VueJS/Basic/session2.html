@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <!-- <div class="app">
+            <p>Bạn có phải bác sỹ không ?</p>
+            <p v-if="confirm === 'A'">Vâng, tôi là bác sỹ</p>
+            <p v-else-if="confirm === 'B'">Không, tôi không phải</p>
+            <p v-else>Tôi sắp thành bác sỹ</p>
+            <button v-on:click="confirm = 'C'">Click</button>
+
+            <template v-if="showMenu">
+                <div>Menu</div>
+                <div>Menu</div>
+                <div>Menu</div>
+                <div>Menu</div>
+                <div>Menu</div>
+            </template>
+
+            <p v-show="showMenu">Test show element</p>
+            <button v-on:click="showMenu=!showMenu">Show/Hide Menu</button>
+            Dùng Template để có thể bao bọc các phần tử dùng chung điều kiện ở bên ngoài; v-show sẽ
+            không bị remove khỏi DOM mà chỉ thêm display:none vào phần tử đó,
+            v-if, v-else phải được dùng trên các thẻ giống nhau v-if trên section thì v-else cũng phải là thẻ section
+        </div> -->
+
+        <div class="forVue">
+            <ul>
+                <li v-for="(menu, index) in menus">
+                    <h4>{{menu.name}}</h4>
+                    <p>{{index}}</p>
+                </li>
+            </ul>
+
+            <template v-for="(menu, index) in menus">
+                <h3>{{menu.name}}</h3>
+                <p>{{index}}</p>
+            </template>
+
+            <ul>
+                <li v-for="(menu, index) in menus">
+                    <p v-for="(value, key, index) in menu">{{index}} - {{key}} - {{value}}</p>
+                </li>
+            </ul>
+        </div>
+
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+        <script>
+            // new Vue({
+            //     el: '.app',
+            //     data: {
+            //         confirm: 'A',
+            //         showMenu: true,
+            //     },
+            // });
+
+            new Vue({
+                el: '.forVue',
+                data: {
+                    menus: [
+                        {
+                            name: 'JavaScript',
+                            age: 10,
+                        },
+                        {
+                            name: 'PHP',
+                            age: 20,
+                        },
+                        {
+                            name: 'C++',
+                            age: 30,
+                        },
+                    ],
+                },
+            });
+        </script>
+    </body>
+</html>
