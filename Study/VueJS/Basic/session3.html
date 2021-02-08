@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <!-- <div id="app">
+            <h1>{{title}}</h1>
+            <h1>Sau khi qua computed {{lowercaseTitle}}</h1>
+            <input type="text" ref="infoInput" />
+            <button v-on:click="show" ref="infoButton">Show</button>
+            <p v-if="showParagraph">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Error sunt rerum deleniti
+                sequi itaque mollitia cumque! Architecto reprehenderit minus nulla maxime? Nisi
+                explicabo dolorem hic corporis nam adipisci? Quas, dignissimos!
+            </p>
+        </div>
+
+        <div id="app2">
+            <h1>{{title}}</h1>
+            <button v-on:click="onChangeTitle">Thay đổi Instance 1</button>
+            <Hello />
+        </div>
+
+        <Hello /> -->
+
+        <div id="lifecycle">
+            <h1>{{title}}</h1>
+            <button v-on:click="onChangeTitle">Update</button>
+            <button v-on:click="onDestroy">Destroy</button>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+        <script>
+            // Vue.component('Hello', {
+            //     template: `<p>Hello Việt Nam</p>`,
+            // });
+
+            // const vn = new Vue({
+            //     el: '#app',
+            //     data: {
+            //         title: 'VueJS Instance',
+            //         showParagraph: false,
+            //     },
+            //     methods: {
+            //         show: function () {
+            //             this.showParagraph = true;
+            //             this.updateTittle('Title Updated');
+            //             console.log(this.$refs.infoInput.value);
+            //         },
+            //         updateTittle: function (title) {
+            //             this.title = title;
+            //         },
+            //     },
+            //     computed: {
+            //         lowercaseTitle: function () {
+            //             return this.title.toLowerCase();
+            //         },
+            //     },
+            //     watch: {
+            //         title: function (newValue) {
+            //             alert(`Title được thay đổi thành ${newValue}`);
+            //         },
+            //     },
+            // });
+
+            // const usa = new Vue({
+            //     el: '#app2',
+            //     data: {
+            //         title: 'Second VueJS Instance',
+            //     },
+            //     methods: {
+            //         onChangeTitle: function () {
+            //             vn.title = 'Instance đã thay đổi title Instance 1';
+            //         },
+            //     },
+            // });
+            // console.log(vn);
+
+            new Vue({
+                el: '#lifecycle',
+                data: {
+                    title: 'Xin chào VueJS',
+                },
+                beforeCreate: function () {
+                    console.log('Trước khi khởi tạo Instance');
+                },
+                created: function () {
+                    console.log('Khởi tạo xong Instance');
+                },
+                beforeMount: function () {
+                    console.log('Trước khi mount ra DOM');
+                },
+                mounted: function () {
+                    console.log('Đã Mount ra DOM');
+                },
+                beforeUpdate: function () {
+                    console.log('Trước khi Update');
+                },
+                updated: function () {
+                    console.log('Đã update');
+                },
+                beforeDestroy: function () {
+                    console.log('Trước khi unmount');
+                },
+                destroyed: function () {
+                    console.log('Đã unmount');
+                },
+                methods: {
+                    onChangeTitle: function () {
+                        this.title = 'new title';
+                    },
+                    onDestroy: function () {
+                        this.$destroy(); //Cắt quan hệ với Vue Instance
+                    },
+                },
+            });
+        </script>
+    </body>
+</html>
