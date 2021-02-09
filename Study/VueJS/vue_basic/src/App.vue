@@ -1,26 +1,27 @@
 <template>
-    <div v-if="show"><Contact /></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <User />
+            </div>
+        </div>
+    </div>
 </template>
 
 <script>
-import Contact from './components/Contact.vue';
+import User from './components/User';
+
 export default {
     name: 'App',
     components: {
-        Contact,
-    },
-    data: function() {
-        return {
-            title: 'Hello',
-            show: true,
-        };
-    },
-    methods: {
-        changeShow: function() {
-            this.show = !this.show;
-        },
+        User,
     },
 };
 </script>
 
-<style scoped></style>
+<style>
+div.component {
+    border: 1px solid black;
+    padding: 30px;
+}
+</style>

@@ -2,7 +2,7 @@
     <div>
         <h1>{{ value }}</h1>
         <button v-on:click="onClick">Click</button>
-        <button v-on:click="callback('hello Duc')">Check callback</button>
+        <button v-on:click="onClick2">Check callback</button>
     </div>
 </template>
 
@@ -12,7 +12,10 @@ export default {
     props: ['value', 'callback'],
     methods: {
         onClick: function() {
-            this.$emit('testMethod', 'hello', 'Duc');
+            this.$emit('testMethod', 'hello', 'Duc2');
+        },
+        onClick2() {
+            this.callback('Xin chao Duc');
         },
     },
 };

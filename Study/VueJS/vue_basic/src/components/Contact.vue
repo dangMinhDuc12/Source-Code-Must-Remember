@@ -2,13 +2,13 @@
     <div>
         <h1>Contact Cpn</h1>
         <!-- <HelloWorld v-for="(value, index) in array" v-bind:value="value" v-bind:key="index" /> -->
-        <!-- <HelloWorld v-on:testMethod="testMethod" /> -->
-        <HelloWorld v-bind:callback="callbackMethod" />
+        <!-- <HelloWorld @testMethod="testMethod" /> -->
+        <!-- <HelloWorld v-bind:callback="callbackMethod" /> -->
     </div>
 </template>
 
 <script>
-import HelloWorld from './HelloWorld';
+// import HelloWorld from './HelloWorld';
 
 export default {
     name: 'Contact',
@@ -18,7 +18,7 @@ export default {
         };
     },
     components: {
-        HelloWorld,
+        // HelloWorld,
     },
     methods: {
         testMethod: function(child, child2) {
