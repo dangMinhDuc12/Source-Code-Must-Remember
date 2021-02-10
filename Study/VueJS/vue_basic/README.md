@@ -1,24 +1,10 @@
-# vue_basic
+VUE GET API
+https://viblo.asia/p/vuejs-trien-khai-rest-api-su-dung-axios-6J3ZgBxAKmB
 
-## Project setup
-```
-npm install
-```
+VUE ROUTER
+https://viblo.asia/p/gioi-thieu-vue-router-RQqKLnvOl7z
+https://viblo.asia/p/tim-hieu-ve-vue-router-gAm5ybvwKdb
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+VUEX
+https://viblo.asia/p/vuex-va-vi-du-don-gian-GrLZDpzgZk0
+https://viblo.asia/p/vuex-cho-nguoi-moi-bat-dau-4dbZNYLLKYM

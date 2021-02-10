@@ -1,20 +1,71 @@
 <template>
-    <div class="container">
+    <!-- <div class="container">
         <div class="row">
             <div class="col-xs-12">
                 <User />
+            </div>
+        </div>
+    </div> -->
+    <div id="app">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <button class="btn btn-danger" @click="selectComponent = 'Car'">
+                        Car
+                    </button>
+                    <button class="btn btn-danger" @click="selectComponent = 'About'">
+                        About
+                    </button>
+                    <button class="btn btn-danger" @click="selectComponent = 'Contac2'">
+                        Contac2
+                    </button>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <!-- <div>
+                        <p>{{ selectComponent }}</p>
+                    </div>
+                    <Car cardWords="Cat">
+                        <template v-slot:title>
+                            <h2>{{ cardTitle }}</h2>
+                        </template>
+
+                        <template v-slot:content>
+                            <p>White Cat is so noobs</p>
+                        </template>
+                        <template #subTitles>
+                            <p>Sub</p>
+                        </template>
+                    </Car> -->
+                    <keep-alive>
+                        <component v-bind:is="selectComponent"></component>
+                    </keep-alive>
+                </div>
             </div>
         </div>
     </div>
 </template>
 
 <script>
-import User from './components/User';
+// import User from './components/User';
+import Car from './components/Car.vue';
+import Contac2 from './components/Contac2.vue';
+import About from './components/About.vue';
 
 export default {
     name: 'App',
     components: {
-        User,
+        // User,
+        Car,
+        Contac2,
+        About,
+    },
+    data() {
+        return {
+            cardTitle: 'Yellow Cat',
+            selectComponent: 'Car',
+        };
     },
 };
 </script>
