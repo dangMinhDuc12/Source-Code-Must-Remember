@@ -49,7 +49,15 @@
         <NewItem :createNew="createNew" />
         <ItemsLayout :items="items" :removeItem="removeItem" />
     </div> -->
-    <div></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-8 offset-sm-2 col-md-6 offset-md-3">
+                <h1>Filter & Mixins</h1>
+                <p>{{ text | toLowerCase }}</p>
+                <List />
+            </div>
+        </div>
+    </div>
 </template>
 
 <script>
@@ -59,6 +67,7 @@
 // import About from './components/About.vue';
 // import ItemsLayout from './components/MiniPJ/ItemsLayout.vue';
 // import NewItem from './components/MiniPJ/NewItem.vue';
+import List from './components/List.vue';
 
 export default {
     name: 'App',
@@ -69,6 +78,7 @@ export default {
         // About,
         // ItemsLayout,
         // NewItem,
+        List,
     },
     // data() {
     //     return {
@@ -91,6 +101,17 @@ export default {
     //         this.items.splice(index, 1);
     //     },
     // },
+
+    data() {
+        return {
+            text: 'Xin chào mọi người, VueJS',
+        };
+    },
+    filters: {
+        toLowerCase(text) {
+            return text.toLowerCase();
+        },
+    },
 };
 </script>
 
