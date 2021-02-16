@@ -6,7 +6,7 @@
             </div>
         </div>
     </div> -->
-    <div id="app">
+    <!-- <div id="app">
         <div class="container">
             <div class="row">
                 <div class="col-sm-12">
@@ -23,7 +23,7 @@
             </div>
             <div class="row">
                 <div class="col-sm-12">
-                    <!-- <div>
+                    <div>
                         <p>{{ selectComponent }}</p>
                     </div>
                     <Car cardWords="Cat">
@@ -37,42 +37,66 @@
                         <template #subTitles>
                             <p>Sub</p>
                         </template>
-                    </Car> -->
+                    </Car>
                     <keep-alive>
                         <component v-bind:is="selectComponent"></component>
                     </keep-alive>
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
+    <!-- <div class="container">
+        <NewItem :createNew="createNew" />
+        <ItemsLayout :items="items" :removeItem="removeItem" />
+    </div> -->
+    <div></div>
 </template>
 
 <script>
-// import User from './components/User';
-import Car from './components/Car.vue';
-import Contac2 from './components/Contac2.vue';
-import About from './components/About.vue';
+// // import User from './components/User';
+// import Car from './components/Car.vue';
+// import Contac2 from './components/Contac2.vue';
+// import About from './components/About.vue';
+// import ItemsLayout from './components/MiniPJ/ItemsLayout.vue';
+// import NewItem from './components/MiniPJ/NewItem.vue';
 
 export default {
     name: 'App',
     components: {
         // User,
-        Car,
-        Contac2,
-        About,
+        // Car,
+        // Contac2,
+        // About,
+        // ItemsLayout,
+        // NewItem,
     },
-    data() {
-        return {
-            cardTitle: 'Yellow Cat',
-            selectComponent: 'Car',
-        };
-    },
+    // data() {
+    //     return {
+    //         cardTitle: 'Yellow Cat',
+    //         selectComponent: 'Car',
+    //     };
+    // },
+
+    // data() {
+    //     return {
+    //         items: ['I Love You', 'You Can Say Hello With Me'],
+    //         maxItems: 10,
+    //     };
+    // },
+    // methods: {
+    //     createNew(item) {
+    //         this.items.push(item);
+    //     },
+    //     removeItem(index) {
+    //         this.items.splice(index, 1);
+    //     },
+    // },
 };
 </script>
 
 <style>
-div.component {
+/* div.component {
     border: 1px solid black;
     padding: 30px;
-}
+} */
 </style>
