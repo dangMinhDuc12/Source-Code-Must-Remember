@@ -15,3 +15,6 @@ https://viblo.asia/p/tim-hieu-ve-redux-thunk-Qbq5Qkm4ZD8?fbclid=IwAR0Ni7EpwUHOJO
 
 //SSH key
 https://rharshad.com/github-ssh-windows/?fbclid=IwAR14rYPMLC9ILj9tYLXK1oj1fywoBnoaHzsK93xwksfv2S5uyGnLjDF9KxI
+
+//axios interceptor
+https://anonystick.com/blog-developer/su-dung-axios-interceptors-lam-moi-token-voi-refresh-token-trong-jwt-2020071757634479
