@@ -18,3 +18,6 @@ https://rharshad.com/github-ssh-windows/?fbclid=IwAR14rYPMLC9ILj9tYLXK1oj1fywoBn
 
 //axios interceptor
 https://anonystick.com/blog-developer/su-dung-axios-interceptors-lam-moi-token-voi-refresh-token-trong-jwt-2020071757634479
+
+//Send email nodemailer
+https://trungquandev.com/gui-nhan-email-trong-nodejs-cuc-ky-don-gian-voi-nodemailer/
