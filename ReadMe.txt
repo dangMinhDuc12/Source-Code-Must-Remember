@@ -23,3 +23,7 @@ https://anonystick.com/blog-developer/su-dung-axios-interceptors-lam-moi-token-v
 
 //Send email nodemailer
 https://trungquandev.com/gui-nhan-email-trong-nodejs-cuc-ky-don-gian-voi-nodemailer/
+
+//Regex
+https://viblo.asia/p/hoc-regular-expression-va-cuoc-doi-ban-se-bot-kho-updated-v22-Az45bnoO5xY
+https://kipalog.com/posts/Regex--Hoc-roi-ma-nhu-chua-hoc
