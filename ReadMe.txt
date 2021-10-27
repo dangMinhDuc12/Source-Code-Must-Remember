@@ -27,3 +27,4 @@ https://trungquandev.com/gui-nhan-email-trong-nodejs-cuc-ky-don-gian-voi-nodemai
 //Regex
 https://viblo.asia/p/hoc-regular-expression-va-cuoc-doi-ban-se-bot-kho-updated-v22-Az45bnoO5xY
 https://kipalog.com/posts/Regex--Hoc-roi-ma-nhu-chua-hoc
+https://dynonguyen.com/regular-expression-la-gi-tai-sao-nen-hoc-regexr/?fbclid=IwAR1QdvK0F-BstImxldhNTSIx1ujGhSfkYdU38HKN-EbtI1Oi2LY8qxSJ4Uw
